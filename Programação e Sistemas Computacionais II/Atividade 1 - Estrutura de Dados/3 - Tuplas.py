@@ -1,4 +1,4 @@
-'''
+# Tuplas
 # 1 - Crie uma tupla com os números de 1 a 5 e imprima a tupla.
 Tupla = (1,2,3,4,5)
 print(Tupla)
@@ -60,4 +60,3 @@ tupla10B = ('a','e','i','o','u')
 diferenca10 = list(set(tupla10).difference(list(set(tupla10B))))
 
 print(f"A Diferença é: {diferenca10}")
-'''
