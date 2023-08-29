@@ -58,7 +58,7 @@ input_user_4 = int(input("\n4- Digite um número e saiba seu correspondente bin�
 print(converteBinario(input_user_4))
 
 # 5- Implemente um histórico de comandos de um editor de texto simples usando uma pilha. A cada vez que um comando é executado, ele é adicionado à pilha. Implemente a capacidade de desfazer um comando usando a pilha.
-boas_vindas = str(input("\nOlá, bem vindo à Central de Comandos! Insira um comando para prosseguirmos: "))
+boas_vindas = str(input("\n5- Olá, bem vindo à Central de Comandos! Insira um comando para prosseguirmos: "))
 comandos, resposta, verificador = [boas_vindas], '', 1
 
 def verificadorDeInput():
