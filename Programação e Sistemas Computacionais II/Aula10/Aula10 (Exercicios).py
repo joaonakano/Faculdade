@@ -54,3 +54,20 @@ def exercicio2(nomeArquivo):
     arquivo.close()
     
 exercicio2("arquivoNomesIdadesAlturas.txt")
+
+
+'''
+3. Escreva uma função que recebe dois nomes de arquivos e copia o conteúdo do primeiro arquivo para o segundo arquivo. Considere que o conteúdo do arquivo de origem é um texto. Sua função não deve copiar linhas comentadas (que começam com //)
+'''
+
+def exercicio3(arquivoAntigo, arquivoNovo):
+    old = open(arquivoAntigo, 'r')
+    new = open(arquivoNovo, 'w+')
+
+    for texto in old:
+        new.writelines(texto)
+        print(texto)
+    old.close()
+    new.close()
+
+exercicio3("numeros.txt", "testes.txt")
