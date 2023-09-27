@@ -1,0 +1,33 @@
+Aula 10 - Leitura e Escrita em Arquivos
+
+Pontos Positivos de Usar esse Método:
+	- Não é necessário digitar os dados pelo usuário,
+	- Os resultados podem ser impressos ou enviados para outras pessoas com maior eficiência,
+	- O estado do programa pode ser salvo e recarregado em outras instâncias.
+
+Operações Básicas:
+	* Abertura do Arquivo,
+	* Fechamento do Arquivo,
+	* Leitura do Conteúdo,
+	* Escrita no Conteúdo.
+
+Estrutura da Abertura de um Arquivo
+	varArquivo = open(nomeArquivo, modo, buffering)
+	
+	* modo      --- [r] read, [w] write, [a] append, [r+] read and write,
+	* buffering --- indica se a memória (buffer) será usada para acelerar operações de entrada e saída --- 0: sem buffers; 1: buffer padrão, default (..., -1, 1); 2: tamanho em bytes (2, 3, ...)
+
+Detalhes do Comando de Escrita:
+	* Arquivo não pode ser aberto como [read]
+	* varArquivo.write(string)
+		- Como são usados buffers, a escrita imediata não é garantida, portanto use flush() ou close() para assegurar a escrita física no arquivo.
+	* varArquivo.writelines(lista)
+		- Escreve uma lista, entretanto, os elementos ficam todos juntos.
+
+Detalhes do Comando de Leitura:
+	* varString = varArquivo.readline()
+		- Lê uma linha e retorna como string.
+	* varListaString = varArquivo.readlines()
+		- Lê o arquivo até o final, retornando o conteúdo em uma lista de strings.
+	* varString = varArquivo.read(numBytes)
+		- Lê numBytes do arquivo e retorna em uma string, se não especificado, estão retorna o conteúdo inteiro.
