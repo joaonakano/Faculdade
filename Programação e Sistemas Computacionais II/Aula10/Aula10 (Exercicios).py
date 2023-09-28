@@ -116,10 +116,49 @@ exercicio4("nomesAlunos.txt", "notasAlunos.txt")
 
 
 '''
-5. Faça um programa para alterar uma das notas de um aluno (usando os arquivos do exercício anterior). O programa deve ter uma função que recebe o nome do aluno, a nota velha e a nova nota. A função deve fazer a alteração no arquivo.
+5.Faça um programa para alterar uma das notas de um aluno (usando os arquivos do exercício anterior). O programa deve ter uma função que recebe o nome do aluno, a nota velha e a nova nota. A função deve fazer a alteração no arquivo.
 '''
+def itNomes(aluno, lista_nomes):
+    for i in lista_nomes:
+        if aluno == i:
+            indice = lista_nomes.index(i)
+            return indice
 
-def exercicio5(arquivo):
-    nomeNotas = open(arquivo, 'w+', encoding="utf-8")
-    print(nomeNotas.readlines())
-exercicio5("arquivoNomesNotas.txt")
+def itNotas(indice, lista_notas):
+    for i in range(len(lista_notas)):
+        if i == indice:
+            return lista_notas[i]
+
+def exercicio5(arquivoNotas, arquivoNomes, nomeAluno, notaAtualizada):
+    arquivo_nomes = open(arquivoNomes, 'r', encoding="utf-8")
+    arquivo_notas = open(arquivoNotas, 'r+', encoding="utf-8")
+    nota_atualizada = notaAtualizada
+    aluno = nomeAluno+'\n'
+
+    nomes = arquivo_nomes.readlines()
+    notas = arquivo_notas.readlines()
+    
+    if aluno in nomes:
+        print("Nome encontrado!\nDeseja alterar a nota? [S]/[N]: ", end='')
+        confirmacao = input()
+        if confirmacao == 's' or 'S':
+            indice_aluno = itNomes(aluno, nomes)
+            notas_na_lista = itNotas(indice_aluno, notas)
+            
+            print(f"Notas encontradas: {notas_na_lista}")
+            
+            arquivo_notas.close()
+            
+            print(f"Atualizando notas...")
+            
+            arquivo_notas = open(arquivoNotas, 'w', encoding="utf-8")
+            notas.remove(notas_na_lista)
+            notas[indice_aluno] = nota_atualizada
+            arquivo_notas.writelines(notas)
+            
+            print(f"Notas atualizadas: {itNotas(indice_aluno, notas)}")
+    else:
+        print(f"Nome não encontrado! {nomes}")
+    arquivo_nomes.flush()
+    arquivo_notas.flush()
+exercicio5("notasAlunos.txt","nomesAlunos.txt", "Ana Silva", "9.0 9.0 9.0\n")
