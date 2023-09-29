@@ -30,5 +30,6 @@
 <p>Faça uma função que leia um arquivo texto contendo uma lista de endereços IP e gere dois outros arquivos, um contendo os endereços IP válidos e outro contendo os endereços inválidos.
 <br/> ⦁ O formato de um endereço IP é num1.num.num.num, onde num1 vai de 1 a 255 e num vai de 0 a 255.<br/></p>
 <h4>Output Esperado</h4>
+<h5>Criação de dois arquivos que separam (1)IPs Inválidos e (2)IPs Válidos.</h5>
 <img src="https://github.com/joaonakano/Faculdade/blob/main/Programa%C3%A7%C3%A3o%20e%20Sistemas%20Computacionais%20II/Aula10%20(Abertura%20e%20Gravacao%20de%20Arquivos)/assets/6(output).png?raw=true" alt="Lista de IPs Invalidos">
 <img src="https://github.com/joaonakano/Faculdade/blob/main/Programa%C3%A7%C3%A3o%20e%20Sistemas%20Computacionais%20II/Aula10%20(Abertura%20e%20Gravacao%20de%20Arquivos)/assets/6(output2).png?raw=true" alt="Lista de IPs Validos">
