@@ -1,0 +1,9 @@
+Para executar o código os seguintes arquivos DEVEM estar na mesma pasta do Aula10 (Exercicios).py:
+    * 3-antigo.txt
+    * 4-listaNomesAlunos.txt
+    * 4-listaNotasAlunos.txt
+    * 6-listaIPs
+
+Esses arquivos são ESSENCIAIS e PRECISAM estar na root folder do projeto. Se houver algum erro na execução, basta criar um arquivo .txt que contenha o nome exato exibido no erro e preenchido com dados aleatórios.
+
+De preferência, para previnir o aparecimento de erros, opte por executar o código no programa VSCode ou semelhantes.
