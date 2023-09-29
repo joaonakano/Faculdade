@@ -112,11 +112,12 @@ def exercicio4(arquivoNomes, arquivoNotas):
     nomes.close()
     notas.close()
     
-exercicio4("nomesAlunos.txt", "notasAlunos.txt")
+# exercicio4("nomesAlunos.txt", "notasAlunos.txt")
 
 
 '''
 5.Faça um programa para alterar uma das notas de um aluno (usando os arquivos do exercício anterior). O programa deve ter uma função que recebe o nome do aluno, a nota velha e a nova nota. A função deve fazer a alteração no arquivo.
+'''
 '''
 def itNomes(aluno, lista_nomes):
     for i in lista_nomes:
@@ -161,4 +162,46 @@ def exercicio5(arquivoNotas, arquivoNomes, nomeAluno, notaAtualizada):
         print(f"Nome não encontrado! {nomes}")
     arquivo_nomes.flush()
     arquivo_notas.flush()
-exercicio5("notasAlunos.txt","nomesAlunos.txt", "Ana Silva", "9.0 9.0 9.0\n")
+'''
+# exercicio5("notasAlunos.txt","nomesAlunos.txt", "Ana Silva", "9.0 9.0 9.0\n")
+
+
+'''
+6.Faça uma função que leia um arquivo texto contendo uma lista de endereços IP e gere dois outros arquivos, um contendo os endereços IP válidos e outro contendo os endereços inválidos. O formato de um endereço IP é num1.num.num.num, onde num1 vai de 1 a 255 e num vai de 0 a 255.
+'''
+
+def exercicio6(arquivoIP):
+    lista_ip = open(arquivoIP, 'r')
+    ip = lista_ip.readline()
+    lista_ip_valido = []
+    lista_ip_invalido = []
+
+    while ip != "":
+        numero_ip = ip.split(".")
+        if len(numero_ip) == 4:  # Verifique se há quatro octetos
+            ip_valido = True
+
+            for i in range(4):
+                octeto = numero_ip[i].replace('\n', '')
+
+                if not (0 <= int(octeto) <= 255):
+                    ip_valido = False
+                    break
+
+            if ip_valido:
+                lista_ip_valido.append(numero_ip)
+            else:
+                lista_ip_invalido.append(numero_ip)
+        else:
+            lista_ip_invalido.append(numero_ip)
+
+        ip = lista_ip.readline()
+        
+    print("Endereços IP válidos:")
+    for ip in lista_ip_valido:
+        print(".".join(ip))
+
+    print("Endereços IP inválidos:")
+    for ip in lista_ip_invalido:
+        print(".".join(ip))
+exercicio6("listaIP.txt")
