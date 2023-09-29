@@ -6,6 +6,7 @@
 <h4>Output Esperado</h4>
 <h5>Criação de um arquivo com Nome, Sobrenome e Idade das pessoas.</h5>
 <img src="https://github.com/joaonakano/Faculdade/blob/main/Programa%C3%A7%C3%A3o%20e%20Sistemas%20Computacionais%20II/Aula10%20(Abertura%20e%20Gravacao%20de%20Arquivos)/assets/1(output).png?raw=true" alt="Nomes Sobrenomes e Idades">
+<hr>
 
 <h3><br>Exercício 2 - Ler Input e Criar Arquivos</h3>
 <p>Estenda o exemplo do cadastro para considerar também a altura da pessoa.<br/></p>
