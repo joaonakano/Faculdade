@@ -1,5 +1,5 @@
 <h1>Aula e Exercícios sobre Abertura e Gravação em Arquivos</h1>
-<h3><br>Exercício 1 - Ler Input e Criar Arquivos</h3>
+<h3>Exercício 1 - Ler Input e Criar Arquivos</h3>
 <p>Faça um programa que leia um número N e gere um arquivo com N nomes e idades aleatórios.
 <br/> ⦁ Faça uso de duas listas criadas na mão: uma que contenha 20 nomes e outra que contenha 20 sobrenomes
 <br/> ⦁ Cada linha do arquivo resultante deve conter um nome completo e a sua idade<br/></p>
