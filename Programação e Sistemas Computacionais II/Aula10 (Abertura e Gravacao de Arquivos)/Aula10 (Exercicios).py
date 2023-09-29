@@ -9,7 +9,7 @@ import random, os
 nomes = ["João", "Maria", "Pedro", "Ana", "Carlos", "Isabel", "Luiz", "Marta", "Ricardo", "Laura", "Fernando", "Sofia", "Antônio", "Camila", "André", "Clara", "José", "Lúcia", "Miguel", "Raquel"]
 sobrenomes = ["Silva", "Santos", "Oliveira", "Pereira", "Ferreira", "Rodrigues", "Almeida", "Cunha", "Machado", "Gomes", "Lima", "Costa", "Carvalho", "Martins", "Araújo", "Ribeiro", "Dias", "Castro", "Nunes", "Cardoso"]
 idades = []
-userInput = int(input("Digite a quantidade de pessoas ALEATÓRIAS a serem criadas (0 a 20): "))
+userInput = int(input("1- Digite a quantidade de pessoas ALEATÓRIAS a serem criadas (0 a 20): "))
 
 def exercicio1(nomeArquivo):
     global idades
@@ -38,7 +38,7 @@ exercicio1("1-listaNomesIdades.txt")
 2. Estenda o exemplo do cadastro para considerar também a altura da pessoa
 '''
 alturas = [1.65, 1.72, 1.58, 1.76, 1.62, 1.80, 1.68, 1.73, 1.55, 1.78, 1.60, 1.70, 1.63, 1.75, 1.59, 1.71, 1.66, 1.79, 1.61, 1.74]
-userInput = int(input("Digite a quantidade de pessoas ALEATÓRIAS a serem criadas (0 a 20): "))
+userInput = int(input("2- Digite a quantidade de pessoas ALEATÓRIAS a serem criadas com suas ALTURAS (0 a 20): "))
 
 def exercicio2(nomeArquivo):
     arquivo = open(nomeArquivo, "w+", encoding="utf-8")
