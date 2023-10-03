@@ -5,6 +5,8 @@ p1 = Pessoa('Roberto', 21)
 p2 = Pessoa('Luis', 68)
 p3 = Pessoa('João', 18)
 
+p1.refeicao = True
+
 p1.comer("Maçã")
 p2.comer("Pudim")
 
