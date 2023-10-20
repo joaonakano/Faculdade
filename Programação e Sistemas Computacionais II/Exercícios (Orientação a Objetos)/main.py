@@ -68,40 +68,9 @@ input("\nPressione uma ENTER para avançar ao jogo do Exercício 10...")
 os.system("clear" if os.name == "posix" else "cls")
 
 # 10 - Crie um jogo simples com personagens que envolva encapsulamento para proteger pontos de vida, herança para diferentes tipos de personagens (guerreiro, mago, arqueiro), polimorfismo para habilidades únicas de cada personagem e abstração para representar a interação do jogador com o jogo.
-from Jogo import Mago, Arqueiro, Guerreiro
+from Jogo import CriarPersonagem, Combate
 import time
 
-user_nome = input("Digite o nome do seu persongem: ")
-while True:
-    user_classe_selecao = int(input("[1] Mago\n[2] Arqueiro\n[3] Guerreiro\n\nSelecione a sua classe: "))
-
-    if user_classe_selecao == 1:
-        user_classe = Mago(user_nome)
-        user_classe.verifica_poderes(user_classe)
-        break
-    elif user_classe_selecao == 2:
-        user_classe = Arqueiro(user_nome)
-        user_classe.verifica_poderes(user_classe)
-        break
-    elif user_classe_selecao == 3:
-        user_classe = Guerreiro(user_nome)
-        user_classe.verifica_poderes(user_classe)
-        break
-    else:
-        print("Classe inválida!")
-        time.sleep(1)
-
-while True:
-    os.system('clear' if os.name == 'posix' else 'cls')
-    print(user_classe._poderes)
-    user_poder_selecao = input("Cast uma habilidade: ")
-    if user_poder_selecao in user_classe._poderes:
-        if user_poder_selecao == "bola":
-            user_classe.bola()
-        elif user_poder_selecao == "disparar_flecha":
-            user_classe.disparar_flecha()
-        elif user_poder_selecao == "martelar":
-            user_classe.martelar()
-        break
-    print("Escolha errada!")
-    time.sleep(1)
+classe = Combate()
+classe.criar_personagem()
+classe.usar_habilidades()
