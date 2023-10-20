@@ -17,15 +17,15 @@ class Transacoes(ABC):
 class ContaBancaria(Transacoes):
     def __init__(self, nome, saldo=0):
         self.__nome = nome
-        self._saldo = float(saldo)
+        self.__saldo = float(saldo)
         
     @property
     def saldo(self):
-        return self._saldo
+        return self.__saldo
         
     @saldo.setter
     def saldo(self, valor_novo):
-            self._saldo = valor_novo
+            self.__saldo = valor_novo
             
     def depositar(self, valor):
         if valor > 0:
@@ -57,7 +57,7 @@ class ContaPoupança(ContaBancaria):
     def adicionar_juros(self):
         juros = self.saldo * self.__taxa
         print(f"R${juros} de juros aplicados sobre o saldo antigo de R${self.saldo}, o novo saldo será R${self.saldo + juros}")
-        self.saldo = self.saldo + juros
+        self.saldo += juros
         
         
 class ContaCorrente(ContaBancaria):
