@@ -238,5 +238,3 @@ def iniciar_jogo():
     combate = Combate(personagem._user_classe)
     combate.iniciar_combate()
     combate.combate_mid()
-
-iniciar_jogo()
