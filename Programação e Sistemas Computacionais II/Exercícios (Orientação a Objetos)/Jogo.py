@@ -32,6 +32,14 @@ class Personagem():
         self._dano += quantidade
 
     @property
+    def healing(self):
+        return self._vida
+
+    @healing.setter
+    def healing(self, valor):
+        self._vida += valor
+
+    @property
     def vida(self):
         return self._vida
 
@@ -88,11 +96,11 @@ class Guerreiro(Personagem):
         time.sleep(2)
         inimigo.dano = (self.nome, 25)
 
-    def usar_habilidade_especial(self):
+    def usar_habilidade_especial(self, inimigo):
         print(f"Você usou a BENÇÃO DIVINA!")
         time.sleep(2)
         print("Deu 50 de HP!")
-        self.vida += 50
+        self.healing = 50
 
 
 class Arqueiro(Personagem):
@@ -102,12 +110,12 @@ class Arqueiro(Personagem):
     def disparar_flecha(self):
         print(f"{self._nome} disparou uma flecha!")
         time.sleep(2)
-        inimigo.dano = (self.nome, 10)
+        inimigo.dano = (self.nome, 40)
     
     def usar_habilidade_especial(self, inimigo):
         print(f"Você usou a MULTI-FLECHADA!")
         time.sleep(2)
-        inimigo.dano = (self.nome, 50)
+        inimigo.dano = (self.nome, random.randint(50, 80))
 
 
 class Interacoes(ABC):
@@ -137,9 +145,9 @@ class CriarPersonagem(Interacoes):
             if user_classe_selecao == 1:
                 self._user_classe = Mago(self._nome)
             elif user_classe_selecao == 2:
-                self._user_classe = Arqueiro(self.nome)
+                self._user_classe = Arqueiro(self._nome)
             elif user_classe_selecao == 3:
-                self._user_classe = Guerreiro(self.nome)
+                self._user_classe = Guerreiro(self._nome)
             else:
                 print("Classe inválida!")
                 time.sleep(1)
@@ -222,6 +230,7 @@ class Combate(Interacoes):
             print("O ORC perdeu!")
         else:
             print("VOCÊ perdeu!")
+
 
 def iniciar_jogo():
     personagem = CriarPersonagem()
