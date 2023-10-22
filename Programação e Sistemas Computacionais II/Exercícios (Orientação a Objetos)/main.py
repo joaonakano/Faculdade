@@ -68,9 +68,6 @@ input("\nPressione uma ENTER para avançar ao jogo do Exercício 10...")
 os.system("clear" if os.name == "posix" else "cls")
 
 # 10 - Crie um jogo simples com personagens que envolva encapsulamento para proteger pontos de vida, herança para diferentes tipos de personagens (guerreiro, mago, arqueiro), polimorfismo para habilidades únicas de cada personagem e abstração para representar a interação do jogador com o jogo.
-from Jogo import CriarPersonagem, Combate
-import time
+import Jogo
 
-classe = Combate()
-classe.criar_personagem()
-classe.usar_habilidades()
+jogo = Jogo.iniciar_jogo()
