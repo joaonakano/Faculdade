@@ -80,7 +80,6 @@ class Mago(Personagem):
         time.sleep(2)
         inimigo.dano = (self.nome, 10)
 
-
     def usar_habilidade_especial(self, inimigo):
         print(f"Você usou a CHUVA de METEOROS!")
         time.sleep(2)
@@ -107,7 +106,7 @@ class Arqueiro(Personagem):
     def __init__(self, nome):
         super().__init__(nome, "Arqueiro", 100)
 
-    def disparar_flecha(self):
+    def disparar_flecha(self, inimigo):
         print(f"{self._nome} disparou uma flecha!")
         time.sleep(2)
         inimigo.dano = (self.nome, 40)
@@ -144,16 +143,18 @@ class CriarPersonagem(Interacoes):
 
             if user_classe_selecao == 1:
                 self._user_classe = Mago(self._nome)
+                break
             elif user_classe_selecao == 2:
                 self._user_classe = Arqueiro(self._nome)
+                break
             elif user_classe_selecao == 3:
                 self._user_classe = Guerreiro(self._nome)
+                break
             else:
                 print("Classe inválida!")
                 time.sleep(1)
 
-            self._user_classe.verifica_poderes(self._user_classe)
-            break
+        self._user_classe.verifica_poderes(self._user_classe)
 
 
 class Combate(Interacoes):
@@ -180,7 +181,7 @@ class Combate(Interacoes):
 
             if isinstance(self._user_classe, Arqueiro):
                 if user_poder_selecao == "disparar_flecha" or int(user_poder_selecao) == 1:
-                    self._user_classe.disparar_flecha()
+                    self._user_classe.disparar_flecha(self._orc)
                     break
 
             if isinstance(self._user_classe, Guerreiro):
