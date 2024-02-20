@@ -4,8 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        header {
+            text-align: center;
+            background-color: rgb(157, 71, 255);
+            color: white;
+            padding: 20px;
+            border: 3px solid rgb(93, 31, 134);
+            font-family: Arial, Helvetica, sans-serif;
+            box-shadow: 5px 1px 100px purple;
+        }
+
+        body {
+            background-color: rgb(17, 8, 71);
+        }
+
+        .nav-bar li{
+            float: left;
+            display: block;
+            padding: 16px;
+            background-color: rgb(255, 176, 103);
+        }
+        
+        main, footer {
+            color: white;
+            clear: both;
+        }
+
+    </style>
 </head>
 <body>
-    
+    <header>
+        <h1>Bem-vindo à Página</h1>
+    </header>
+
+    <nav>
+        <ul class="nav-bar">
+            <li><a href="">Sobre</a></li>
+            <li><a href="#texto">Inicio</a></li>
+            <li><a href="">Contato</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="home">
+            <h2 style="padding-top: 50px">Introdução</h2>
+            <p>Este é o conteúdo da sessão "Inicial".</p>
+        </section>
+        <section id="sobre">
+            <h2>Sobre mim</h2>
+            <p>Este é o conteúdo da sessão "Sobre".</p>
+        </section>
+        <section id="contato">
+            <h2>Entre em contato</h2>
+            <p>Este é o conteúdo da sessão "Contato".</p>
+        </section>
+    </main> 
+
+    <footer>
+        <p>Copyright &copy; 2024 João Nakano</p>
+    </footer>
 </body>
 </html>
