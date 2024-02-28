@@ -26,3 +26,55 @@ body {
     margin: 0 auto;
     padding: 15px;
 }
+
+#area-lateral {
+    width: 240px;
+    float: right;
+}
+
+#area-postagens {
+    width: 660px;
+    float: left;
+}
+
+.postagem {
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #eeebeb;
+}
+
+.conteudo-lateral {
+    font-size: 8px;
+    padding: 5px;
+    border-bottom: 1px dotted #eeebeb;
+}
+
+#rodape {
+    text-align: center;
+    background-color: #ccccccd6;
+    padding: 15px;
+}
+
+/* Formatação do Menu */
+a {
+    text-decoration: none;
+}
+
+a:link, a:visited {
+    color: #f7b600;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+#area-cabecalho a:link, #area-cabecalho a:visited {
+    color: #fff;
+    padding: 8px 12px;
+}
+
+#area-cabecalho a:hover {
+    color: #f7b600;
+    background-color: #e6e6e6;
+    text-decoration: none;
+}
