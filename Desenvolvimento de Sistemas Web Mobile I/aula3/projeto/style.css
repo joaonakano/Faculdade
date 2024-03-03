@@ -1,0 +1,130 @@
+* {
+    margin: 0;
+}
+
+/* Cabeçalho */
+#header h1 {
+    font-family: 'Bebas Neue', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 130px;
+    font-weight: 100;
+    letter-spacing: 7px;
+    margin-left: 580px;
+    margin-bottom: 0;
+    padding-top: 30px;
+}
+
+#header img {
+    float: left;
+    margin: 0 20px 0 0;
+    width: 500px;
+}
+
+/* Corpo do Documento */
+main {
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 19px;
+    text-align: justify;
+    margin: 0 90px 0 580px;
+}
+
+#biography h2, #experience h2, #certification h2 {
+    margin: 60px 0 0 0;
+    font-weight: 360;
+    letter-spacing: 10px;
+}
+
+#biography p {
+    line-height: 30px;
+}
+
+#biography #texto {
+    margin-top: 50px;
+}
+
+#experience h3 {
+    margin-top: 50px;
+    font-weight: 600;
+    padding-bottom: 5px;
+}
+
+#experience h4 {
+    font-weight: 400;
+    padding: 5px 0;
+}
+
+#experience #date {
+    padding-bottom: 20px;
+}
+
+#experience ul, #certification ul {
+    line-height: 30px;
+    margin-left: 20px;
+}
+
+#certification #alura, #certification #ef {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Painel Lateral */
+aside {
+    float: left;
+    clear: left;
+    color: #e7e2e2;
+    background-color: #0a0a0a;
+    width: 500px;
+    font-family: 'Montserrat', Arial, serif;
+}
+
+/* Icones */
+#github-icon {
+    float: left;
+    margin: -3px 0 0 100px;
+    width: 30px;
+}
+
+/* Contato */
+#contact p{
+    margin: 30px 0 30px 155px;
+}
+
+/* Habilidades */
+#skills {
+    margin-left: 100px;
+}
+
+#skills h2 {
+    margin: 50px 0 30px 0;
+}
+
+#skills li {
+    padding: 5px 0;
+}
+
+/* Educação */
+#education h2 {
+    margin: 45px 0 50px 100px;
+}
+
+#education h3 {
+    margin: 15px 0 20px 100px;
+}
+
+#education p {
+    margin: 0 0 10px 100px;
+}
+
+/* Idiomas */
+#language {
+    margin: 50px 0 20px 100px;
+}
+
+#language p {
+    margin-top: 35px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 80px;
+}
