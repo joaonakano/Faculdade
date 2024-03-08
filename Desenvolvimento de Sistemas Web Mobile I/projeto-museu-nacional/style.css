@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#nav-menu li {
+    display: inline;
+    padding: 0 10px;
+    color: #b06c14;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 15px;
+}
+
+#header-container {
+    justify-content: space-between;
+    flex-wrap: wrap;
+    display: flex;
+    padding: 30px 160px 30px 130px;
+    box-shadow: 10px 5px 20px #a7a7a7;
+    background-color: #29271E;
+}
+
+#nav-menu a:link, #nav-menu a:visited {
+    text-decoration: none;
+}
+
