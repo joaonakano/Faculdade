@@ -7,28 +7,109 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <div id="header-container">
-            <div>
-                <img src="assets/logo.png">
-            </div>
-            <div id="nav-menu">
-                <ul>
-                    <a href="#home"><li>HOME</li></a>
-                    <a href="#exposicoes"><li>EXPOSIÇÕES</li></a>
-                    <a href="#pesquisa"><li>PESQUISA</li></a>
-                    <a href="#acervo"><li>ACERVO</li></a>
-                    <a href="#videos"><li>VÍDEOS</li></a>
-                    <a href="#fotos"><li>FOTOS</li></a>
-                    <a href="#contato"><li>CONTATO</li></a>
-                </ul>
-            </div>
-        </div>
+    <header id="header-nav">
+        <img src="assets/logo.png" alt="Logo Museu Nacional">
+        <nav>
+            <ul>
+                <li id="start"><a href="#HOME">HOME</a></li>
+                <li><a href="#EXPOSICOES">EXPOSIÇÕES</a></li>
+                <li><a href="#PESQUISA">PESQUISAS</a></li>
+                <li><a href="#ACERVO">ACERVO</a></li>
+                <li><a href="#VIDEOS">VÍDEOS</a></li>
+                <li><a href="#FOTOS">FOTOS</a></li>
+                <li id="end"><a href="#CONTATO">CONTATO</a></li>
+            </ul>
+        <nav>
     </header>
-    <main>
-        <img src="assets/museu.png">
-    <footer>
 
+    <main>
+        <section class="banner">
+            <figure>
+                <img id="museu" src="assets/museu.png" alt="Imagem da Entrada do Museu Nacional">
+            </figure>
+        </section>
+        
+        <article>
+            <section class="video">
+                <header>
+                    <h3>VÍDEO: CONHEÇA O MUSEU</h3>
+                </header>
+                <figure>
+                    <iframe width="400" height="250" src="https://www.youtube.com/embed/G4mSMLGHtWg?si=22engSIDrLRFlL-w&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </figure>
+            </section>
+            
+            <section class="map">
+                <header>
+                    <h3>MAPA: ENCONTRE O MUSEU</h3>
+                </header>
+                <figure>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d463.81549717783196!2d-51.46801324428236!3d-25.374931126941604!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbr!4v1710024220880!5m2!1sen!2sbr" width="400" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </figure>
+            </section>
+            
+            <section class="exposicao">
+                <header>
+                    <h3>EXPOSIÇÕES</h3>
+                </header>
+                <ul>
+                    <li>Os assustadores insetos</li>
+                    <li>O crânio de Luzia, a mulher mais antiga do Brasil</li>
+                    <li>Preguiça gigante e tigre-dentes-de-sabre</li>
+                    <li>Teresa Cristina: A Imperatriz Arqueológica</li>
+                    <li>Arte com Dinossauros - Paleoarte</li>
+                    <li><strong>Veja todos (65)</strong></li>
+                </ul>
+            </section>
+            
+            <section class="historia">
+                <header>
+                    <h3>200 ANOS DE HISTÓRIA</h3>
+                </header>
+                <p>Numa porta que avançava sobre o mar, posteriormente conhecida como Ponta do Calabouço, entre as praias de Piaçaba e Santa Luzia, no centro histórico do Rio de Janeiro, os portugueses construíram em 1603 a Fortaleza de Santiago, origem do conjunto arquitetônico que hoje abriga o Museu Histórico Nacional.</p>
+                <p class="ler-mais"><strong><a href="#LER-MAIS">Leia mais</a></strong></p>
+            </section>
+        </article>
+    </main>
+    
+    <aside>
+        <section class="depoimento">
+            <figure>
+                <img id="depoimento" src="assets/depoimento.png" alt="Depoimento sobre a fundação do Museu Nacional">
+            </figure>
+        </section>
+
+        <section class="agendamento">
+            <header>
+                <h3>FAÇA UMA VISITA</h3>
+            </header>
+            <p>Data <input type="date"> Qtd pessoas <input type="text" placeholder="1" size="4"></p>
+            <button class="botao-disponibilidade" type="button">Verificar Disponibilidade</button>
+        </section>
+        
+        <section class="galeria">
+            <header>
+                <h3>GALERIA DE FOTOS</h3>
+            </header>
+        </section>
+    </aside>
+    
+    <footer>
+        <figure>
+            <img src="assets/fundo-rodape.png" alt="Linha Divisória Rodapé">
+        </figure>
+        <nav>
+            <ul>
+                <li><a href="">Home</a></li>
+                <li><a href="">Exposições</a></li>
+                <li><a href="">Pesquisa</a></li>
+                <li><a href="">Acervo</a></li>
+                <li><a href="">Vídeos</a></li>
+                <li><a href="">Fotos</a></li>
+                <li><a href="">Contato</a></li>
+            </ul>
+        </nav>
+        <p>2024 <span id="enterprise">Museu Nacional</span> - Todos os Direitos Reservados.</p>
     </footer>
 </body>
 </html>
