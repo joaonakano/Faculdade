@@ -1,0 +1,24 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.background {
+    width: 50%;
+    background-color: blue;
+    padding-bottom: 100vh;
+}
+
+.background2 {
+    width: 50%;
+    background-color: red;
+    padding-bottom: 100vh;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100vw;
+}
