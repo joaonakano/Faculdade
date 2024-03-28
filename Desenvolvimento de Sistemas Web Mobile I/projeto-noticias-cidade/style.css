@@ -1,0 +1,22 @@
+* {
+    padding: 0;
+    margin: 0; 
+}
+
+header {
+    background-image: url(assets/fundo.png);
+    background-repeat: repeat-x;
+    background-size: 200px 200px;
+    height: 1000px;
+}
+
+header ul li {
+    display: inline;
+    color: white;
+    background-color: red;
+    padding: 30px 250px 7% 170px;
+}
+
+header ul li a:link, header ul li a:visited{
+    text-decoration: none;
+}
