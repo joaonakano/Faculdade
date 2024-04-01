@@ -3,20 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HOME - Notícias Cidade</title>
+    <title>Notícias Cidade</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <ul>
-            <li><a href="#">HOME</a></li>
-            <li><a href="#">BRASIL</a></li>
-            <li><a href="#">INTERNACIONAL</a></li>
-            <li><a href="#">ECONOMIA</a></li>
-            <li><a href="#">SAUDE</a></li>
-            <li><a href="#">CIENCIA</a></li>
-            <li><a href="#">FOTOS</a></li>
-        </ul>
-    </header>
+    <div class="wrapper">
+        <!-- Navigation -->
+        <nav class="main-nav">
+            <ul>
+                <li><a href="">Home</a></li>
+                <li><a href="">Brasil</a></li>
+                <li><a href="">Internacional</a></li>
+                <li><a href="">Economia</a></li>
+                <li><a href="">Saúde</a></li>
+                <li><a href="">Ciência</a></li>
+                <li><a href="">Fotos</a></li>
+            </ul>
+        </nav>
+
+        <!-- Background -->
+        <div id="background"></div>
+
+        <!-- Entrevistas -->
+        <section id="interviews" class="custom-border">
+            <h3 class="categoria">Entrevistas</h3>
+            <p><a href="#">José Almeida</a></p>
+            <p><a href="#">Felipe Silva</a></p>
+            <p><a href="#">Renato Rodrigues</a></p>
+            <p><a href="#">Abelardo Silveira</a></p>
+            <p><a href="#">André Carlos</a></p>
+            <p><a href="#">Márcio Mello</a></p>
+            <p><a href="#">João Pedro</a></p>
+            <p><a href="#">Fernando Weiss</a></p>
+        </section>
+
+        <!-- Destaques -->
+        <section id="highlights" class="custom-border">
+            <h3 class="categoria">Destaques</h3>
+            <h4 class="title">NOVA LEGISLAÇÃO</h4>
+            <img class="normal-preview" src="assets/taxi.jpg" alt="imagem de táxis">
+            <p class="main-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. <br> <span class="ler-mais"><a href="#">Leia mais!</a></span></p>
+        </section>
+
+        <!-- Última Entrevista -->
+        <section id="last-interview" class="custom-border">
+            <h3 class="categoria">Última Entrevista</h3>
+            <h4 class="title">ENTREVISTA COM FELIPE SILVA</h4>
+            <img class="normal-preview" src="assets/doutor.jpg" alt="imagem de um doutor">
+            <p class="main-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit.<br><span class="ler-mais"><a href="#">Leia mais!</a></span></p>
+        </section>
+
+        <!-- Assinar a Newsletter -->
+        <section id="newsletter-form" class="custom-border">
+            <h3 class="categoria">News</h3>
+            <p>Email:</p>
+            <form class="form">
+                <input type="text" placeholder="Email">
+            </form>
+            <button class="btn">Cadastrar</button>
+        </section>
+
+        <!-- Notícias Mundiais -->
+        <section id="global" class="custom-border">
+            <h3 class="categoria">Mundo</h3>
+            <div class="container">
+                <div class="news-preview">
+                    <img src="assets/tecnologia.jpg" alt="uma mesa de escritório minimalista com várias tecnologias" class="mini-preview">
+                    <h4 class="small-title"><a href="#">NOVAS TECNOLOGIAS!</a></h4>
+                    <p>Lorem ipsum dolor sit amet consectetur...</p>
+                    <hr>
+                </div>
+                <div class="news-preview">
+                    <img src="assets/tecnologia.jpg" alt="uma mesa de escritório minimalista com várias tecnologias" class="mini-preview">
+                    <h4 class="small-title"><a href="#">NOVAS TECNOLOGIAS!</a></h4>
+                    <p>Lorem ipsum dolor sit amet consectetur...</p>
+                    <hr>
+                </div>
+                <div class="news-preview">
+                    <img src="assets/tecnologia.jpg" alt="uma mesa de escritório minimalista com várias tecnologias" class="mini-preview">
+                    <h4 class="small-title"><a href="#">NOVAS TECNOLOGIAS!</a></h4>
+                    <p>Lorem ipsum dolor sit amet consectetur...</p>
+                    <hr>
+                </div>
+                <div class="news-preview">
+                    <img src="assets/tecnologia.jpg" alt="uma mesa de escritório minimalista com várias tecnologias" class="mini-preview">
+                    <h4 class="small-title"><a href="#">NOVAS TECNOLOGIAS!</a></h4>
+                    <p>Lorem ipsum dolor sit amet consectetur...</p>
+                    <hr>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; Copyright 2000 - 2022 Notícias Cidade</p>
+        </footer>
+
+    </div>
+    <!-- Wrapper ends -->
 </body>
 </html>
