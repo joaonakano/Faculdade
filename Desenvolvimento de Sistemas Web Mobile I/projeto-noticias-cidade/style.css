@@ -190,6 +190,8 @@ footer {
     color: white;
 }
 
+
+/* Media Queries */
 @media screen and (max-width: 619px) {
     body {
         font-size: 14px;
