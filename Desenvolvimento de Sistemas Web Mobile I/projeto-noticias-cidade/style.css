@@ -6,7 +6,7 @@
 }
 
 
-/* CSS Variables */
+/* CSS Default Values */
 html {
     box-sizing: border-box;
     font-family: "Trebuchet MS", Helvetica, sans-serif;
@@ -78,11 +78,11 @@ img {
 /* Header Background */
 #background {
     z-index: 1;
-    grid-column: 1 / 4;
-    grid-row: 1;
+    grid-column: 1 / 4 ;
+    grid-row: 1 / 6;
     background-image: url(assets/fundo.png);
     background-repeat: repeat-x;
-    background-size: 175px;
+    background-size: 180px;
 }
 
 /* Navigation */
@@ -115,7 +115,7 @@ img {
 /* Main Page - Highlights */
 #highlights {
     grid-column: 2;
-    grid-row: 2;
+    grid-row: 6;
     display: grid;
     grid-template-columns: 1fr;
 }
@@ -144,6 +144,7 @@ img {
 /* Main Page - Mundo */
 #global {
     grid-column: 2;
+    grid-row: 7;
     display: grid;
 }
 
@@ -184,6 +185,7 @@ img {
 
 /* Footer */
 footer {
+    grid-row: 8;
     grid-column: span 3;
     text-align: center;
     background-color: #294c71;
@@ -197,40 +199,117 @@ footer {
         font-size: 14px;
     }
     
+    .main-nav {
+        font-size: 0.8em;
+    }
+
+    #background {
+        background-size: 120px;
+        grid-row: 1 / 5;
+    }
+
+    #highlights {
+        grid-row: 4;
+    }
+
     #highlights img {
         width: 97%;
     }
 
+    #global{
+        grid-row: 5;
+    }
+
+    footer {
+        grid-row: 6;
+    }
+}
+
+/* small tablets */
+@media screen and (min-width: 620px) {
+    body {
+        font-size: 15px;
+    }
+    
     .main-nav {
         font-size: 0.8em;
     }
-}
 
-/* small tablet styles */
-@media screen and (min-width: 620px) {
-    body {
-        font-size: 16px;
+    #background {
+        background-size: 140px;
+        grid-row: 1 / 5;
+    }
+
+    #highlights {
+        grid-row: 5;
     }
 
     #highlights img {
-        width: 98%;
+        width: 97%;
+    }
+
+    #global{
+        grid-row: 6;
+    }
+
+    footer {
+        grid-row: 7;
     }
 }
+
 
 /* large tablet styles and laptops*/
 @media screen and (min-width: 960px) {
     body {
-        font-size: 18px;
+        font-size: 17px;
+    }
+
+    #background {
+        background-size: 170px;
+        grid-row: 1 / 6;
+    }
+
+    #highlights {
+        grid-row: 6;
     }
 
     #highlights img {
         width: 98%;
+    }
+
+    #global {
+        grid-row: 7;
+    }
+
+    footer {
+        grid-row: 8;
     }
 }
 
 /* desktop styles */
 @media screen and (min-width: 1200px){
+    body {
+        font-size: 18px;
+    }
+
+    #background {
+        background-size: 185px;
+        grid-row: 1 / 7
+    }
+
+    #highlights {
+        grid-row: 7;
+    }
+
     #highlights img {
         width: 99%;
+    }
+
+    #global {
+        grid-row: 8;
+    }
+
+    footer {
+        grid-row: 9;
     }
 }
