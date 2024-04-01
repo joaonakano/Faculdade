@@ -28,6 +28,7 @@ img {
     color: #f9f9f9;
     background-color: #294c71;
     padding: 0.2rem 0.5rem;
+    font-size: 1em;
 }
 
 .title {
@@ -36,6 +37,7 @@ img {
     color: #f9f9f9;
     background-color: #e50040;
     padding: 0.2rem;
+    font-size: 1em;
 }
 
 .btn {
