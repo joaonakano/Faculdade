@@ -157,58 +157,52 @@ function main(){
 
     switch (opcao) {
         case 0:
-            break;
+            return;
         case 1:
             exercicio1();
-            verificador();
             break;
         case 2:
             exercicio2();
-            verificador();
             break;
         case 3:
             exercicio3();
-            verificador();
             break;
         case 4:
             exercicio4();
-            verificador();
             break;
         case 5:
             exercicio5();
-            verificador();
             break;
         case 6:
             exercicio6();
-            verificador();
             break;
         case 7:
             exercicio7();
-            verificador();
             break;
         case 8:
             exercicio8();
-            verificador();
             break;
         case 9:
             exercicio9();
-            verificador();
             break;
         default:
             alert("Opção inválida.");
             main();
     }
-
-    function verificador(){
+    
+    function verificador() {
         let opcao = +prompt("Deseja entrar em outra atividade?\n\n 1. Sim\n 0. Não\n\n");
 
         if (opcao == 1) {
             main();
         } else if (opcao == 0) {
+            return;
         } else {
             verificador();
         }
     }
+
+    verificador();
 }
 
 
