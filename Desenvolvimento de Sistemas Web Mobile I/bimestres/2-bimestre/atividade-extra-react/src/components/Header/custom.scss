@@ -1,0 +1,17 @@
+header {
+    background-color: rgba(0, 0, 0, 0.67);
+    text-align: center;
+    padding: 1rem 0;
+
+    a:link, a:visited {
+        color: white;
+        text-decoration: none;
+        padding: 1rem 2rem;
+        font-size: 1rem;
+    }
+
+    a:hover {
+        background-color: rgb(52, 52, 52);
+        transition: background-color 1s ease;
+    }
+}
