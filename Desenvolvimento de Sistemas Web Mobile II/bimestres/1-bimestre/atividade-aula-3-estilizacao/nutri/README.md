@@ -3,4 +3,4 @@
 
 2. Ir até ```nutri/src/App.css``` e copiar o código CSS para o **App.css** do seu projeto React,
 
-3. Inicializar com ```npm start```!
+3. Instalar as dependências com ```npm i``` e depois executar com ```npm start```!
