@@ -1,0 +1,43 @@
+.word {
+    font-size: 1em;
+    line-height: 1em;
+    font-variant: no-common-ligatures;
+}
+
+.likedadvices-container {
+    grid-column: 2;
+    display: flex;
+    justify-content: space-between;
+    border: 5px solid #e2b714;
+    background-color: #232527;
+    padding: 4rem 1rem;
+    position: relative;
+    margin: 1rem 0;
+    border-radius: .5rem;
+}
+
+.dislike-button {
+    transition: 500ms;
+    position: absolute;
+    top: 0.2rem;
+    right: 0.2rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 50%;
+    border: none;
+    background-color: #232527;
+    color:aliceblue
+}
+
+.dislike-button:hover {
+    cursor: pointer;
+    transition: 500ms;
+    color: #fff;
+    background-color: #ce444462;
+    font-weight: bolder;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: auto;
+}

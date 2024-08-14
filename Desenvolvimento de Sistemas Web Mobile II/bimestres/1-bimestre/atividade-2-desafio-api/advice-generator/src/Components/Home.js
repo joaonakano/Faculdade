@@ -1,20 +1,24 @@
 import React, { useState, useEffect } from 'react';     // Importação das Bibliotecas necessárias
 import axios from 'axios';
 
-import Button from './Button';
-import Advice from './Advice';
+import MainAdvice from './MainAdvice';
+import LikedAdvice from './LikedAdvice';
+import Header from './Header';
+
+import './Styles/Home.css'
 
 export default function Home()                          // Deixando o componente Home vísivel em todo o repositório 
 {   
+    const url = `https://api.adviceslip.com/advice?${new Date().getTime()}`;
+    
+    const [advicesArray, setAdvice] = useState([]);
+
     const [Data, setData] = useState({                  // Criando uma variável Data para armazenar os dados da API
         id: '',                                         // Objeto JavaScript para filtrar e selecionar os dados necessários ID e CONSELHO
         advice: ''
     });
 
-    const [advicesArray, setAdvice] = useState([]);
-
-    const url = `https://api.adviceslip.com/advice?${new Date().getTime()}`;
-
+    // FUNÇÃO QUE REALIZA REQUISIÇÕES AO SERVIDOR DE CONSELHOS
     const fetchData = (retryCounter = 1) => {           // Função responsável por enviar as Requisições                                           
         axios.get(url)                                  // Utilizando a Biblioteca Axios para manipular essa requisição para o api.adviceslip.com
         .then(response => {                             // Em seguida armazenamos o retorno já padronizado em JSON pelo AXIOS
@@ -30,6 +34,22 @@ export default function Home()                          // Deixando o componente
         })
     }
 
+    // HOOKS PARA ATUALIZAR E RECUPERAR DADOS DO LOCALSTORAGE
+    useEffect(() => {
+        fetchData();                                    // Call da função de requisição
+        const localStorageData = JSON.parse(localStorage.getItem('advices'));
+
+        localStorageData
+        ? setAdvice(localStorageData)
+        : setAdvice([]);
+    }, []);
+    
+    useEffect(() => {
+        localStorage.setItem('advices', JSON.stringify(advicesArray));
+    }, [advicesArray]);                                 // Toda vez que o advicesArray é modificado (ADD ou REMOVE), é atualizado o localStorage
+
+    
+    // PRINCIPAIS FUNÇÕES DOS BOTÕES
     const [showAdviceList, setShowAdviceList] = useState();
 
     const handleShowAdviceListClick = () => {
@@ -53,6 +73,9 @@ export default function Home()                          // Deixando o componente
 
     const newAdvice = () => {
         fetchData();
+        if (showAdviceList == true) {
+            handleShowAdviceListClick();
+        }
     }
 
     const likeAdvice = (adviceId, adviceText) => {
@@ -64,54 +87,27 @@ export default function Home()                          // Deixando o componente
         }
     }
 
+    // VERIFICADOR
     const verifyIdOnLocalStorage = (id) => {
         return advicesArray.some(item => item.id === id);
     }
 
-    useEffect(() => {
-        const localStorageData = JSON.parse(localStorage.getItem('advices'));
-
-        localStorageData
-        ? setAdvice(localStorageData)
-        : setAdvice([]);
-    }, []);
-    
-    useEffect(() => {
-        localStorage.setItem('advices', JSON.stringify(advicesArray));
-    }, [advicesArray]);                                 // Toda vez que o advicesArray é modificado (ADD ou REMOVE), é atualizado o localStorage
-
-    useEffect(() => {                                   // Utilizando o Hook useEffect para realizar uma requisição para a API
-        fetchData(url);                                 // Call da função de requisição
-    }, []);
-
     return(
-        <>
-            <Advice id={Data.id} advice={Data.advice} handleLike={() => {likeAdvice(Data.id, Data.advice)}}/>
-            <Button label="Apagar Todos Conselhos" onClick={deleteAllAdvices}/>
-            <Button label="Novo Conselho" onClick={newAdvice}/>
-            <Button label="Exibir/Ocultar Pins" onClick={handleShowAdviceListClick}/>
-            {showAdviceList
-            ? advicesArray.map(item => {
-                    return(
-                        <Advice key={item.id} id={item.id} advice={item.advice} handleDislike={() => {dislikeAdvice(item.id, item.advice)}}/>
-                    )
-                })
-            : null
-            }
-        </>
+        <div>
+            <link rel="preconnect" href="https://fonts.googleapis.com"></link>
+            <link rel="preconnect" href="https://fonts.gstatic.com"></link>
+            <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet"></link>
+            
+            <div className="center roboto-mono">
+                <Header handleFullDeletion={deleteAllAdvices} handlesShowAdviceListClick={handleShowAdviceListClick} handleNewAdvice={newAdvice}/>                    
+                {showAdviceList
+                    ? advicesArray.map(item => {
+                        return(<LikedAdvice key={item.id} advice={item.advice} handleDislike={() => {dislikeAdvice(item.id, item.advice)}}/>)
+                    })
+                    : <MainAdvice advice={Data.advice} handleLike={() => {likeAdvice(Data.id, Data.advice)}}/>
+                }
+            </div>
+        </div>
     );
 
 }
-
-
-
-/*
-IDEIAS QUE EU TIVE PARA ESTE APLICATIVO
-
-- Um botao que é responsável por atualizar APENAS o componente, não a página - FEITO
-- Armazenar conselhos que você gostou - FEITO
-- Exibir uma lista de conselhos curtidos - FEITO
-- Poder remover um conselho curtido - FEITO
-- Armazenar no localStorage as curtidas para não sofrerem flush após a reinicialização do componente - FEITO
-
-*/

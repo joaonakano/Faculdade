@@ -1,0 +1,42 @@
+.word {
+    font-size: 1em;
+    line-height: 1em;
+    font-variant: no-common-ligatures;
+}
+
+.advice-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.align-self-center {
+    align-self: center;
+}
+
+.advice {
+    background-color: #232527;;
+    border: 0.3rem solid #e2b714;
+    box-shadow: 0px 0.5rem 0px #e2b714;
+    padding: 5rem;
+    border-radius: .5rem;
+    margin-bottom: 2.5rem;
+}
+
+.clear-background {
+    background-color: transparent;
+    border: none;
+}
+
+.like-button {
+    transition: 500ms;
+    border: 0.2rem solid #2961ac;
+    padding: 0.5rem;
+    border-radius: 10rem;
+    margin-bottom: 3rem;
+}
+
+.like-button:hover {
+    cursor: pointer;
+    transition: 500ms;
+    background-color: #438ca8;
+}

@@ -1,0 +1,38 @@
+.header {
+    width: 100%;
+}
+
+.menu  {
+    background-color: #2c2e31;
+    padding: 0.5em 0.5em;
+    margin-top: 2rem;
+    display: inline-block;
+    border-radius: .5rem;
+}
+
+.transparent-background {
+    background-color: transparent;
+}
+
+.menu-button {
+    transition: 500ms;
+    border: none;
+    text-decoration: none;
+    color: #646669;
+    margin: 0 1rem;
+    font-weight: light;
+}
+
+.menu-button:hover {
+    cursor: pointer;
+    transition: 500ms;
+    color: #fff;
+}
+
+.highlight-menu {
+    color: #e2b714
+}
+
+.divider {
+    color: #191a1b;
+}
