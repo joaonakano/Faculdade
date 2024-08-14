@@ -4,6 +4,7 @@ import axios from 'axios';
 import MainAdvice from './MainAdvice';                  // Importação dos componentes vitais da Home: Header, MainAdvice e LikedAdvices
 import LikedAdvice from './LikedAdvice';
 import Header from './Header';
+import Footer from './Footer';
 
 import './Styles/Home.css'
 
@@ -72,7 +73,7 @@ export default function Home()                          // Deixando o componente
 
     const newAdvice = () => {                           // Função responsável por gerar um novo Conselho
         fetchData();                                    // Envia-se uma nova requisição para a API para obter um conselho novo
-        if (showAdviceList == true) {                   // Validador que verifica se o booleano da Visualização da Lista de Conselhos Curtidos é verdadeiro, ou seja, se o usuário estiver na página de Listagem dos Conselhos Curtidos, ele será automaticamente para a página principal: Gerador de Conselhos
+        if (showAdviceList === true) {                   // Validador que verifica se o booleano da Visualização da Lista de Conselhos Curtidos é verdadeiro, ou seja, se o usuário estiver na página de Listagem dos Conselhos Curtidos, ele será automaticamente para a página principal: Gerador de Conselhos
             handleShowAdviceListClick();                // Função que inverte o valor do booleano da Visualização da Lista de Conselhos Curtidos para falso, ocultando sua visualização portanto
         }
     }
@@ -115,6 +116,7 @@ export default function Home()                          // Deixando o componente
                     : <MainAdvice advice={Data.advice} handleLike={() => {likeAdvice(Data.id, Data.advice)}}/>  // Muito importante prestar atenção nos PROPS da função, eles carregam e enviam o ID e o Texto do Conselho para as funções aqui da Home
                 }
             </div>
+            <Footer />
         </div>
     );
 
