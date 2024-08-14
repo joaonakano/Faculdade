@@ -14,7 +14,7 @@
 }
 
 .advice {
-    background-color: #232527;;
+    background-color: #232527;
     border: 0.3rem solid #e2b714;
     box-shadow: 0px 0.5rem 0px #e2b714;
     padding: 5rem;
@@ -29,14 +29,17 @@
 
 .like-button {
     transition: 500ms;
-    border: 0.2rem solid #2961ac;
     padding: 0.5rem;
     border-radius: 10rem;
     margin-bottom: 3rem;
+    color: #6c6d6e;
+    border: 0.2rem solid #535557;
 }
 
 .like-button:hover {
     cursor: pointer;
     transition: 500ms;
+    border: 0.2rem solid #2961ac;
     background-color: #438ca8;
+    color: #fff;
 }
