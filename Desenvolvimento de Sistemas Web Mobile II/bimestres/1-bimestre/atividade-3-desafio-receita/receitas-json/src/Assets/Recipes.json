@@ -1,0 +1,46 @@
+[
+    {
+        "id": 1,
+        "titulo": "Sopa de Abóbora com Gengibre",
+        "ingredientes": [
+            "500g de abóbora",
+            "1 cebola",
+            "2 dentes de alho",
+            "1 pedaço de gengibre (aproximadamente 2 cm)",
+            "1 litro de caldo de legumes",
+            "Sal e pimenta a gosto",
+            "Azeite de oliva"
+        ],
+        "modoPreparo": "1. Descasque e corte a abóbora em cubos. Pique a cebola e o alho. Rale o gengibre. Em uma panela, aqueça o azeite e refogue a cebola e o alho até ficarem dourados. Adicione o gengibre e refogue por mais 1 minuto. Adicione a abóbora e o caldo de legumes. Cozinhe até que a abóbora esteja macia. Bata a sopa no liquidificador até obter um creme liso. Tempere com sal e pimenta a gosto e sirva quente."
+    },
+    {
+        "id": 2,
+        "titulo": "Espaguete à Carbonara",
+        "ingredientes": [
+            "200g de espaguete",
+            "100g de bacon",
+            "2 ovos",
+            "50g de queijo parmesão ralado",
+            "2 dentes de alho",
+            "Sal e pimenta a gosto",
+            "Azeite de oliva"
+        ],
+        "modoPreparo": "1. Cozinhe o espaguete em água salgada até ficar al dente. Enquanto isso, corte o bacon em cubos e frite em uma frigideira com um pouco de azeite até ficar crocante. Pique o alho e adicione à frigideira, refogando por 1 minuto. Em uma tigela, bata os ovos e misture com o queijo parmesão. Escorra o espaguete e misture com o bacon e o alho na frigideira. Retire do fogo e acrescente a mistura de ovos e queijo, mexendo rapidamente para que o calor da massa cozinhe os ovos e forme um molho cremoso. Tempere com sal e pimenta a gosto e sirva imediatamente."
+    },
+    {
+        "id": 3,
+        "titulo": "Salada de Quinoa com Legumes",
+        "ingredientes": [
+            "1 xícara de quinoa",
+            "1 pepino",
+            "1 pimentão vermelho",
+            "1 cenoura",
+            "1/2 xícara de milho",
+            "1/4 de xícara de salsinha picada",
+            "Suco de 1 limão",
+            "3 colheres de sopa de azeite de oliva",
+            "Sal e pimenta a gosto"
+        ],
+        "modoPreparo": "1. Cozinhe a quinoa conforme as instruções da embalagem e deixe esfriar. Pique o pepino, o pimentão e a cenoura em cubos pequenos. Em uma tigela grande, misture a quinoa com os legumes, o milho e a salsinha. Em uma tigela separada, prepare o molho misturando o suco de limão com o azeite, sal e pimenta. Despeje o molho sobre a salada e misture bem. Sirva fria ou em temperatura ambiente."
+    }
+]
