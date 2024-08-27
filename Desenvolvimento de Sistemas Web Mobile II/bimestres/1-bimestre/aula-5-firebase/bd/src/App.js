@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { db, auth } from './firebaseConnection.js'; // Importando variaveis da conexao do firebase
+import "./style.css";
 
 import {
   doc,
@@ -74,6 +75,7 @@ export default function App(){
             autor: doc.data().autor
         });
       });
+      setPost(lista);
       alert("Posts Recuperados com Sucesso!");
     }).catch(error => {
       console.log(error);
@@ -99,10 +101,52 @@ export default function App(){
   // (D)elete
   async function excluirPost(id) {
     const postDeletado = doc(db, "posts", id);
-    await deleteDoc(docRef).then(() => {  // O que faz o docRef?
+    await deleteDoc(postDeletado).then(() => {  // O que faz o docRef?
       alert("Post Deletado com Sucesso!");
     }).catch(error => {
       console.log(error);
     });
   }
+
+  return(
+    <div>
+      <h1>ReactJS + Firebase</h1>
+      
+      <h2>POSTS</h2>
+      <label>ID do Post:</label>
+      <input
+      placeholder="ID do post"
+      value={idPost}
+      onChange={e => {setIdPost(e.target.value)}} />
+      
+      <label>Título:</label>
+      <textarea
+      type="text"
+      placeholder="Título"
+      value={titulo}
+      onChange={(e) => {setTitulo(e.target.value)}}/>
+      
+      <label>Autor:</label>
+      <input
+      type="text"
+      placeholder="autor"
+      value={autor}
+      onChange={e => {setAutor(e.target.value)}}/>
+
+      <button onClick={adicionarPosts}>Inserir</button>
+      <button onClick={buscarPosts}>Buscar</button>
+      <button onClick={editarPost}>Editar</button>
+      
+      <ul>
+        {post.map(item => (
+          <li key={item.id}>
+            <strong>ID: {item.id}</strong>
+            <span className='title'>Título: {item.titulo}</span>
+            <span className='author'>Autor: {item.autor}</span>
+            <button onClick={() => excluirPost(item.id)}>Apagar</button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
