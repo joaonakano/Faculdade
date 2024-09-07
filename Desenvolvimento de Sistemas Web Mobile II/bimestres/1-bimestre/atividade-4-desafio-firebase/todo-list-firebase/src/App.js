@@ -3,10 +3,8 @@ import { db, auth } from './firebaseConnection.js';
 
 import {
   doc,
-  setDoc,
   collection,
   addDoc,
-  getDoc,
   getDocs,
   updateDoc,
   deleteDoc,
@@ -21,7 +19,6 @@ import {
 } from 'firebase/auth';
 
 export default function App() {
-  const [titulo, setTitulo] = useState('');
   const [tarefa, setTarefa] = useState('');
   const [status, setStatus] = useState('');
   const [idTarefa, setIdTarefa] = useState('');
@@ -63,6 +60,7 @@ export default function App() {
             uid: user.uid,
             email: user.email
           });
+          setIdAutor(user.uid);
         } else {
           setUsuario(false);
         }
@@ -74,7 +72,7 @@ export default function App() {
   async function novoUsuario() {
     await createUserWithEmailAndPassword(auth, email, senha)
     .then(() => {
-      alert("Usuário cadasrado com sucesso!");
+      alert("Usuário cadastrado com sucesso!");
       setEmail("");
       setSenha("");
     })
@@ -121,7 +119,6 @@ export default function App() {
   // CRUD
   async function adicionarTarefa() {
     await addDoc(collection(db, "todoList"), {
-      titulo: titulo,
       tarefa: tarefa,
       status: status,
       idAutor: idAutor
@@ -131,7 +128,6 @@ export default function App() {
       setIdAutor("");
       setStatus("");
       setTarefa("");
-      setTitulo("");
     })
     .catch(err => {
       console.log(err);
@@ -163,15 +159,13 @@ export default function App() {
   async function editarTarefa() {
     const tarefaEditada = doc(db, "todoList", idTarefa);
 
-    await updateDoc(postEditado, {
-      titulo: titulo,
+    await updateDoc(tarefaEditada, {
       tarefa: tarefa,
       status: status,
       idAutor: idAutor
     })
     .then(() => {
       alert("Tarefa editada com sucesso!");
-      setTitulo('');
       setStatus('');
       setTarefa('');
       setIdAutor('');
@@ -192,4 +186,92 @@ export default function App() {
     })
   }
 
+  return(
+    <div>
+      <h1>Todo-List with Firebase</h1>
+
+      {usuario && (
+        <div>
+          <strong>Seja bem-vindo(a)</strong>
+          <br/>
+          <span>ID: {detalhesUsuario.uid}</span>
+          <br/>
+          <span>Email: {detalhesUsuario.email}</span>
+          <br/>
+          <button onClick={fazerLogout}>Sair</button>
+        </div>
+      )}
+      
+      {!usuario && (
+        <div>
+          <h2>Usuários</h2>
+          <label>Email:</label>
+          <input
+          type="e-mail"
+          placeholder="Digite um e-mail"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)} />
+    
+          <label>Senha:</label>
+          <input
+          type="password"
+          placeholder="Digite uma senha"
+          value={senha}
+          onChange={(e) => setSenha(e.target.value)} />
+    
+          <button onClick={novoUsuario}>Cadastrar</button>
+          <button onClick={logarUsuario}>Login</button>
+        </div>
+      )}
+
+      <hr/>
+
+      <h2>TODO</h2>
+      <label>ID da Tarefa:</label>
+      <input
+      placeholder="ID da tarefa"
+      value={idTarefa}
+      onChange={e => {setIdTarefa(e.target.value)}} />
+
+      <label>Tarefa:</label>
+      <input
+      type="text"
+      placeholder="tarefa"
+      value={tarefa}
+      onChange={e => {setTarefa(e.target.value)}}/>
+
+      <label>Status:</label>
+      <input
+      type="text"
+      placeholder="concluida"
+      value={status}
+      onChange={e => {setStatus(e.target.value)}}/>
+
+      <button onClick={adicionarTarefa}>Inserir</button>
+      <button onClick={buscarTodoList}>Buscar</button>
+      <button onClick={editarTarefa}>Editar</button>
+      
+      <ul>
+        {todoList.map(item => {
+          if(item.idAutor === detalhesUsuario.uid) {
+            return(
+              <li key={item.id}>
+                <strong>Tarefa: {item.tarefa}</strong>
+                <span>Status: {item.status}</span>
+                <button onClick={() => removerTarefa(item.id)}>Apagar</button>
+              </li>
+            )
+          }
+        })}
+      </ul>
+    </div>
+  );
+
+  /*
+  const [titulo, setTitulo] = useState(''); FEITO
+  const [tarefa, setTarefa] = useState(''); FEITO
+  const [status, setStatus] = useState(''); FEITO
+  const [idTarefa, setIdTarefa] = useState(''); FEITO
+  const [idAutor, setIdAutor] = useState(''); FEITO
+  */
 }
