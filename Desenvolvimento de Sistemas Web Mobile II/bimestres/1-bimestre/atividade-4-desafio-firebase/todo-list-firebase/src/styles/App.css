@@ -1,0 +1,110 @@
+* {
+    margin: 0;
+    padding: 0;
+    background-color: rgb(43, 40, 40);
+    color: rgb(240, 232, 232);
+}
+
+.align-text-center {
+    text-align: center;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-auto-rows: max-content;
+}
+
+.header {
+    grid-column: 2/3;
+    grid-row: 1;
+}
+
+aside {
+    grid-column: 3/4;
+    grid-row: 1;
+}
+
+.todo-form-container {
+    grid-column: 2/3;
+    grid-row-start: 2;
+}
+
+main {
+    grid-column: 2/3;
+    grid-row: 3/4;
+    padding: 3rem 0;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1.5rem 0;
+}
+
+@media only screen and (max-width: 600px) {
+    * {
+        font-size: 16px;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    * {
+        font-size: 16px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    * {
+        font-size: 18px;
+    }
+    h1 {
+        font-size: 36px;
+    }
+    h2 {
+        font-size: 32px;
+    }
+    h3 {
+        font-size: 28px;
+    }
+    h4 {
+        font-size: 24px;
+    }
+    h5 {
+        font-size: 22px;
+    }
+    h6 {
+        font-size: 20px;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    * {
+        font-size: 18px;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    * {
+        font-size: 18px;
+    }
+    h1 {
+        font-size: 40px;
+    }
+    h2 {
+        font-size: 36px;
+    }
+    h3 {
+        font-size: 32px;
+    }
+    h4 {
+        font-size: 28px;
+    }
+    h5 {
+        font-size: 24px;
+    }
+    h6 {
+        font-size: 20px;
+    }
+} 

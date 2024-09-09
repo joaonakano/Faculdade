@@ -1,0 +1,54 @@
+.flex-container {
+    transition: 500ms;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.flex-item {
+    transition: 500ms;
+    box-sizing: border-box;
+    padding: 2%;
+    margin: 10px;
+    border-radius: 8px;
+    max-width: 100%;
+    position: relative;
+}
+
+.remove-button {
+    font-size: .5rem;
+    padding: .4rem;
+    position: absolute;
+    right: 1px;
+    top: 6px;
+    cursor:pointer;
+    border-radius: 25%;
+    background-color: rgba(0, 0, 0, 0.164);
+    border: none;
+}
+
+.remove-button:hover {
+    background-color: rgb(255, 88, 88);
+}
+
+.transparent-background {
+    background-color: transparent;
+}
+
+.black {
+    color: black;
+}
+
+.h3 {
+    font-size: 1.5rem;
+}
+
+.h2 {
+    font-size: 2.5rem;
+}
+
+.text {
+    font-size: 1rem;
+}

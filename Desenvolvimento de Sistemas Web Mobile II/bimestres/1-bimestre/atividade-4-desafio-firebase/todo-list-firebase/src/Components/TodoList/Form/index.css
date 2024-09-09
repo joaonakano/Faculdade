@@ -1,0 +1,65 @@
+.align-text-center {
+    text-align: center;
+}
+
+.main-form-field input, .main-form-field button {
+    background-color: rgb(26, 26, 27);
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+.main-form-field {
+    background-color: pink;
+    padding: 20px;
+    border-radius: 20px;
+    border: 3px solid rgb(90, 86, 87);
+    display: inline-block;
+}
+
+.wrapper-flex-container {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: #87CEEB;
+    transition: 500ms;
+    color: rgb(12, 12, 12);
+}
+
+button {
+    transition: 500ms;
+    margin: 0 .5rem;
+}
+
+fieldset {
+    margin: .3rem 0;
+    border-radius: 10px;
+    background-color: rgb(26, 26, 27);
+    border: none;
+    text-align: justify;
+    padding-bottom: .5rem;
+}
+
+fieldset > legend {
+    background-color: rgb(26, 26, 27);
+    padding: 0.2rem;
+    border-radius: 10px;
+    color: pink;
+}
+
+label {
+    margin: 0 .3rem;
+}
+
+.container-radio {
+    margin: 0 .3rem;
+}
+
+.text-input {
+    width: 80%;
+    margin: 0 0.22rem;
+}

@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { db, auth } from './firebaseConnection.js';
 
+import "./styles/App.css";
+
+import Welcome from "./Components/User/Welcome/Welcome";
+import UserForm from "./Components/User/Form/UserForm";
+import TodoForm from "./Components/TodoList/Form/TodoForm";
+import TodoList from "./Components/TodoList/List/TodoList";
+
 import {
   doc,
   collection,
@@ -8,7 +15,8 @@ import {
   getDocs,
   updateDoc,
   deleteDoc,
-  onSnapshot  
+  onSnapshot,  
+  setDoc
 } from 'firebase/firestore';
 
 import {
@@ -38,7 +46,8 @@ export default function App() {
         let listaDeAfazeres = [];
         snapshot.forEach(doc => {
           listaDeAfazeres.push({
-            id: doc.id,
+            idContent: doc.id,
+            idTarefa: doc.data().idTarefa,
             titulo: doc.data().titulo,
             tarefa: doc.data().tarefa,
             status: doc.data().status,
@@ -82,7 +91,7 @@ export default function App() {
       }
 
       if (err.code === 'auth/email-already-in-use') {
-        alert("Emaill já cadastrado! Tente novamente com um e-mail diferente ou acesse sua conta.")
+        alert("E-mail já cadastrado! Tente novamente com um e-mail diferente ou acesse sua conta.")
       }
     });
   }
@@ -116,24 +125,29 @@ export default function App() {
     setDetalhesUsuario({});
   }
 
-  // CRUD
+  // (C)reate
   async function adicionarTarefa() {
-    await addDoc(collection(db, "todoList"), {
-      tarefa: tarefa,
-      status: status,
-      idAutor: idAutor
-    })
-    .then(() => {
-      alert("Registro realizado com sucesso!");
-      setIdAutor("");
-      setStatus("");
-      setTarefa("");
-    })
-    .catch(err => {
-      console.log(err);
-    })
+    if(todoList.find(item => item.idTarefa === idTarefa)) {
+      alert("O ID já existe no Banco de Dados!");
+    } else {
+      await setDoc(doc(db, "todoList", idTarefa), {
+        tarefa: tarefa,
+        status: status,
+        idAutor: idAutor,
+        idTarefa: idTarefa
+      })
+      .then(() => {
+        alert("Registro realizado com sucesso!");
+        setStatus("");
+        setTarefa("");
+      })
+      .catch(err => {
+        console.log(err);
+      })
+    }
   }
 
+  // (R)ead
   async function buscarTodoList() {
     const config = collection(db, "todoList");
     await getDocs(config)
@@ -141,7 +155,8 @@ export default function App() {
       let lista = [];
       snapshot.forEach(doc => {
         lista.push({
-          id: doc.id,
+          idContent: doc.id,
+          idTarefa: doc.data().idTarefa,
           titulo: doc.data().titulo,
           tarefa: doc.data().tarefa,
           status: doc.data().status,
@@ -156,30 +171,30 @@ export default function App() {
     })
   }
 
+  // (U)pdate
   async function editarTarefa() {
     const tarefaEditada = doc(db, "todoList", idTarefa);
 
     await updateDoc(tarefaEditada, {
       tarefa: tarefa,
-      status: status,
-      idAutor: idAutor
+      status: status
     })
     .then(() => {
       alert("Tarefa editada com sucesso!");
       setStatus('');
       setTarefa('');
-      setIdAutor('');
     })
     .catch(err => {
       console.log(err);
     });
   }
 
+  // (D)elete
   async function removerTarefa(id) {
     const tarefaDeletada = doc(db, "todoList", id);
     await deleteDoc(tarefaDeletada)
     .then(() => {
-      alert("Tarefa removida com sucesso!");
+      return;
     })
     .catch(err => {
       console.log(err);
@@ -187,91 +202,22 @@ export default function App() {
   }
 
   return(
-    <div>
-      <h1>Todo-List with Firebase</h1>
-
-      {usuario && (
-        <div>
-          <strong>Seja bem-vindo(a)</strong>
-          <br/>
-          <span>ID: {detalhesUsuario.uid}</span>
-          <br/>
-          <span>Email: {detalhesUsuario.email}</span>
-          <br/>
-          <button onClick={fazerLogout}>Sair</button>
-        </div>
-      )}
-      
-      {!usuario && (
-        <div>
-          <h2>Usuários</h2>
-          <label>Email:</label>
-          <input
-          type="e-mail"
-          placeholder="Digite um e-mail"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)} />
-    
-          <label>Senha:</label>
-          <input
-          type="password"
-          placeholder="Digite uma senha"
-          value={senha}
-          onChange={(e) => setSenha(e.target.value)} />
-    
-          <button onClick={novoUsuario}>Cadastrar</button>
-          <button onClick={logarUsuario}>Login</button>
-        </div>
-      )}
-
-      <hr/>
-
-      <h2>TODO</h2>
-      <label>ID da Tarefa:</label>
-      <input
-      placeholder="ID da tarefa"
-      value={idTarefa}
-      onChange={e => {setIdTarefa(e.target.value)}} />
-
-      <label>Tarefa:</label>
-      <input
-      type="text"
-      placeholder="tarefa"
-      value={tarefa}
-      onChange={e => {setTarefa(e.target.value)}}/>
-
-      <label>Status:</label>
-      <input
-      type="text"
-      placeholder="concluida"
-      value={status}
-      onChange={e => {setStatus(e.target.value)}}/>
-
-      <button onClick={adicionarTarefa}>Inserir</button>
-      <button onClick={buscarTodoList}>Buscar</button>
-      <button onClick={editarTarefa}>Editar</button>
-      
-      <ul>
-        {todoList.map(item => {
-          if(item.idAutor === detalhesUsuario.uid) {
-            return(
-              <li key={item.id}>
-                <strong>Tarefa: {item.tarefa}</strong>
-                <span>Status: {item.status}</span>
-                <button onClick={() => removerTarefa(item.id)}>Apagar</button>
-              </li>
-            )
-          }
-        })}
-      </ul>
+    <div className="grid-container">
+      <div className="header header-container">
+        <h1>Todo-List com Firebase</h1>
+      </div>
+      <aside>
+        {usuario
+          ? (<Welcome dataUser={detalhesUsuario} handleLogout={fazerLogout} />)
+          : (<UserForm stateEmail={email} setEmail={setEmail} stateSenha={senha} setSenha={setSenha} handleRegister={novoUsuario} handleLogin={logarUsuario} />)
+        }
+      </aside>
+      <div className='todo-form-container'>
+        <TodoForm stateIdTarefa={idTarefa} setIdTarefa={setIdTarefa} stateTarefa={tarefa} setTarefa={setTarefa} stateStatus={status} setStatus={setStatus} handleTodoAddition={adicionarTarefa} handleTodoSearch={buscarTodoList} handleTodoEdit={editarTarefa} />
+      </div>
+      <main>
+        <TodoList stateTodoList={todoList} stateDetalhesUsuario={detalhesUsuario} handleTodoRemove={removerTarefa} />
+      </main>
     </div>
   );
-
-  /*
-  const [titulo, setTitulo] = useState(''); FEITO
-  const [tarefa, setTarefa] = useState(''); FEITO
-  const [status, setStatus] = useState(''); FEITO
-  const [idTarefa, setIdTarefa] = useState(''); FEITO
-  const [idAutor, setIdAutor] = useState(''); FEITO
-  */
 }

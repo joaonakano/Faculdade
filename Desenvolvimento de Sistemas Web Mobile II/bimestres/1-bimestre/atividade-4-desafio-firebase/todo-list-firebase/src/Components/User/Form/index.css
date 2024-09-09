@@ -1,0 +1,29 @@
+.container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.login-form {
+    background-color: rgb(26, 26, 27);
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.user-form-buttons {
+    text-align: center;
+}
+
+.user-form-button {
+    padding: .5rem;
+    margin-top: 1rem;
+    border-radius: 10px;
+    border: none;
+    background-color: pink;
+    color: rgb(15, 15, 15);
+}
+
+.email {
+    display: flex;
+    justify-content: space-between;
+}
