@@ -1,0 +1,17 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar a:link {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.navbar ul li {
+    display: inline-block;
+    margin: 0 1em;
+    padding: 2em;
+    text-align: center;
+}
