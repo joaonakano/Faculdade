@@ -4,6 +4,24 @@ void main() {
   runApp(const MyApp());
 }
 
+class SecondApp extends StatelessWidget {
+  const SecondApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text("Nova Página!")),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: const Text('Voltar'))
+      )
+    );
+  }
+}
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -183,6 +201,22 @@ class _FormularioPageState extends State<FormularioPage> {
                   ),
                 ),
               ),
+              SizedBox(
+                height: 25,
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const SecondApp())
+                  );
+                },
+                child: Container(
+                  color: Colors.amber,
+                  padding: const EdgeInsets.all(8),
+                  child: Text("Ir para a página"),
+                )
+              )
             ],
           ),
         ),
