@@ -1,16 +1,7 @@
-# aula_1
+# Aula 1: Página de Introdução ao Flutter
 
-Primeira aplicação em Flutter.
+Breve app de boas-vindas ao Flutter.
 
-## Getting Started
+## Aviso
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+É possível que, durante a execução do projeto, o usuário se confronte com pacotes inexistentes, impossibilitando a build adequada. Para solucionar o problema, é necessário, havendo o Flutter SDK previamente instalado no computador, executar o código ``flutter pub get`` e aguardar as dependências serem baixadas pelo CLI.
