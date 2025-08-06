@@ -1,0 +1,13 @@
+/home/nakano/Documents/Faculdade/Aulas/mao-na-massa/mobile/aula03_input_interatividade/projeto_integrador/build/linux/x64/debug/bundle/projeto_integrador
+/home/nakano/Documents/Faculdade/Aulas/mao-na-massa/mobile/aula03_input_interatividade/projeto_integrador/build/linux/x64/debug/bundle/data/icudtl.dat
+/home/nakano/Documents/Faculdade/Aulas/mao-na-massa/mobile/aula03_input_interatividade/projeto_integrador/build/linux/x64/debug/bundle/lib/libflutter_linux_gtk.so
+/home/nakano/Documents/Faculdade/Aulas/mao-na-massa/mobile/aula03_input_interatividade/projeto_integrador/build/linux/x64/debug/bundle/data/flutter_assets/NativeAssetsManifest.json
+/home/nakano/Documents/Faculdade/Aulas/mao-na-massa/mobile/aula03_input_interatividade/projeto_integrador/build/linux/x64/debug/bundle/data/flutter_assets/kernel_blob.bin
+/home/nakano/Documents/Faculdade/Aulas/mao-na-massa/mobile/aula03_input_interatividade/projeto_integrador/build/linux/x64/debug/bundle/data/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf
+/home/nakano/Documents/Faculdade/Aulas/mao-na-massa/mobile/aula03_input_interatividade/projeto_integrador/build/linux/x64/debug/bundle/data/flutter_assets/FontManifest.json
+/home/nakano/Documents/Faculdade/Aulas/mao-na-massa/mobile/aula03_input_interatividade/projeto_integrador/build/linux/x64/debug/bundle/data/flutter_assets/AssetManifest.json
+/home/nakano/Documents/Faculdade/Aulas/mao-na-massa/mobile/aula03_input_interatividade/projeto_integrador/build/linux/x64/debug/bundle/data/flutter_assets/AssetManifest.bin
+/home/nakano/Documents/Faculdade/Aulas/mao-na-massa/mobile/aula03_input_interatividade/projeto_integrador/build/linux/x64/debug/bundle/data/flutter_assets/version.json
+/home/nakano/Documents/Faculdade/Aulas/mao-na-massa/mobile/aula03_input_interatividade/projeto_integrador/build/linux/x64/debug/bundle/data/flutter_assets/fonts/MaterialIcons-Regular.otf
+/home/nakano/Documents/Faculdade/Aulas/mao-na-massa/mobile/aula03_input_interatividade/projeto_integrador/build/linux/x64/debug/bundle/data/flutter_assets/shaders/ink_sparkle.frag
+/home/nakano/Documents/Faculdade/Aulas/mao-na-massa/mobile/aula03_input_interatividade/projeto_integrador/build/linux/x64/debug/bundle/data/flutter_assets/NOTICES.Z

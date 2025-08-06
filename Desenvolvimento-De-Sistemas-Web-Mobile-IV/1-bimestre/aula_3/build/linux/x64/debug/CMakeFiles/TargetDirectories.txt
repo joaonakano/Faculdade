@@ -1,0 +1,14 @@
+/home/nakano/Documents/Faculdade/Aulas/mao-na-massa/mobile/aula03_input_interatividade/projeto_integrador/build/linux/x64/debug/CMakeFiles/projeto_integrador.dir
+/home/nakano/Documents/Faculdade/Aulas/mao-na-massa/mobile/aula03_input_interatividade/projeto_integrador/build/linux/x64/debug/CMakeFiles/edit_cache.dir
+/home/nakano/Documents/Faculdade/Aulas/mao-na-massa/mobile/aula03_input_interatividade/projeto_integrador/build/linux/x64/debug/CMakeFiles/rebuild_cache.dir
+/home/nakano/Documents/Faculdade/Aulas/mao-na-massa/mobile/aula03_input_interatividade/projeto_integrador/build/linux/x64/debug/CMakeFiles/list_install_components.dir
+/home/nakano/Documents/Faculdade/Aulas/mao-na-massa/mobile/aula03_input_interatividade/projeto_integrador/build/linux/x64/debug/CMakeFiles/install.dir
+/home/nakano/Documents/Faculdade/Aulas/mao-na-massa/mobile/aula03_input_interatividade/projeto_integrador/build/linux/x64/debug/CMakeFiles/install/local.dir
+/home/nakano/Documents/Faculdade/Aulas/mao-na-massa/mobile/aula03_input_interatividade/projeto_integrador/build/linux/x64/debug/CMakeFiles/install/strip.dir
+/home/nakano/Documents/Faculdade/Aulas/mao-na-massa/mobile/aula03_input_interatividade/projeto_integrador/build/linux/x64/debug/flutter/CMakeFiles/flutter_assemble.dir
+/home/nakano/Documents/Faculdade/Aulas/mao-na-massa/mobile/aula03_input_interatividade/projeto_integrador/build/linux/x64/debug/flutter/CMakeFiles/edit_cache.dir
+/home/nakano/Documents/Faculdade/Aulas/mao-na-massa/mobile/aula03_input_interatividade/projeto_integrador/build/linux/x64/debug/flutter/CMakeFiles/rebuild_cache.dir
+/home/nakano/Documents/Faculdade/Aulas/mao-na-massa/mobile/aula03_input_interatividade/projeto_integrador/build/linux/x64/debug/flutter/CMakeFiles/list_install_components.dir
+/home/nakano/Documents/Faculdade/Aulas/mao-na-massa/mobile/aula03_input_interatividade/projeto_integrador/build/linux/x64/debug/flutter/CMakeFiles/install.dir
+/home/nakano/Documents/Faculdade/Aulas/mao-na-massa/mobile/aula03_input_interatividade/projeto_integrador/build/linux/x64/debug/flutter/CMakeFiles/install/local.dir
+/home/nakano/Documents/Faculdade/Aulas/mao-na-massa/mobile/aula03_input_interatividade/projeto_integrador/build/linux/x64/debug/flutter/CMakeFiles/install/strip.dir
