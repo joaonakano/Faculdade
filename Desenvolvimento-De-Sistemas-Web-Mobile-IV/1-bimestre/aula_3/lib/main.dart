@@ -48,5 +48,83 @@ class FormularioSimplesPage extends StatefulWidget {
 
 class _FormularioSimplesPageState extends State<FormularioSimplesPage> {
 /// Codificação efetiva do estado a ser utilizado no widget. O State<Type> significa que o estado está explicitamente atrelado à classe FormularioSimplesPage, impedindo o uso dos métodos de seu objeto em outro widget não mencionado
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  // Uma GlobalKey é uma identificação ÚNICA dentro do app para o estado que controla o formulário <FormState> e que é definida durante o RUNTIME e permanece inalterada (PARECE SER APENAS ÚTIL EM DEBUGGING)
 
+  final TextEditingController _nomeController = TextEditingController();
+  // Instancia um controller para um campo editável no layout e atribui a uma variável final
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _senhaController = TextEditingController();
+
+  String _toqueMensagem = 'Nenhum toque detectado ainda.';
+
+  @override
+  void dispose() {
+    /// Destrói permanentemente os recursos da classe
+    
+    _nomeController.dispose();
+    _emailController.dispose();
+    _senhaController.dispose();
+    super.dispose();
+  }
+  
+  void _enviarFormulario() {
+    if (_formKey.currentState!.validate()) {
+      /// Valida os campos editáveis do formulário
+      
+      ScaffoldMessenger.of(context).showSnackBar(
+      /// Gerenciador de snack bars e material banners. Utiliza o BUILDCONTEXT atual para criar os componentes no lugar correto
+      
+        SnackBar(content: Text(
+        /// Instancia a mensagem no lado inferior da tela
+          
+          'Formulário Válido!\nNome: ${_nomeController}, Email: ${_emailController.text}'),
+          backgroundColor: Colors.green,
+        ),
+      );
+
+      print('Dados a enviar:');
+      print('Nome: ${_nomeController.text}');
+      print('Email: ${_emailController.text}');
+      print('Senha: ${_senhaController.text}');
+      
+    } else {
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Por favor, corrija os erros no formulário.'),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+  /// Sobrescreve o método build para gerar o elemento do formulário
+  
+    return Scaffold(
+    /// Retorna uma estrutura pronta de tela
+    
+      appBar: AppBar(
+        title: const Text('Entrada de Dados e Interatividade'),
+      ),
+
+      body: SingleChildScrollView(
+      /// Cria uma caixa onde apenas o widget pode ser escrolável (scrollable)
+      
+        padding: const EdgeInsets.all(20.0),
+        
+        child: Form(
+          key: _formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+
+            ],
+          )
+        )
+      )
+    )
+  }
 }
