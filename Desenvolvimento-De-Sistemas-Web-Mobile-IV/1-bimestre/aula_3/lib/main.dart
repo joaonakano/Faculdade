@@ -1,130 +1,322 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-/// O pontapé inicial para inicializar o aplicativo é a função runApp()
-/// Passamos um OBJETO que servirá de widget mais acima da hierarquia
-/// Pode ser CONST, NEW ou apenas o nome da classe seguida de parênteses ()
-
 class MyApp extends StatelessWidget {
-/// A classe serve como contâiner para os outros widgets ao mesmo tempo que é ela mesma um widget
-/// As classes derivam de classes abstratas como StatelessWidget, StatefulWidget, etc
-
   const MyApp({super.key});
-  /// Construtor CONSTANTE (compile-time evalued) que passa uma uma chave à superclasse. Lembrando que usam-se os colchetes para possibilitar a definição diretamente na chamada do construtor: construtor(key: abc)
+
+  /* CODIGO ABAIXO NAO FUNCIONA. MOTIVO: NAO TEM MATERIAL APP NA RAIZ, APENAS O SCAFFOLD
+  @override
+  build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text("Meu primeiro App Sozinho"),),
+      body: const Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Text("Teste!")
+        ],
+      ),
+    );
+  }
+  */
+
+  /*
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: "Meu primeiro app sem ajuda",
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text("Home"),
+        ),
+        body: const Text("Texto inicial"),
+      ),
+    );
+  }
+  */
 
   @override
   Widget build(BuildContext context) {
-  /// Sobrescrição do método BUILD da classe abstrata, geralmente usa-se a notação @override para sinalizar melhor ao compilador do flutter
-  /// O BUILDCONTEXT é um objeto da classe ELEMENTO, que possui informações valiosas sobre onde aquele nó está em relação à árvore de elementos. Representa a localização de um widget
-  
     return MaterialApp(
-    /// Um MaterialApp é um widget que reúne as funcionalidades obrigatórias mais comuns de aplicações que usam o Material Design
       title: 'Inputs e Interatividade',
-      // Título que fica acima da snapshot do aplicativo, não é o título da página ou algo parecido
-
       theme: ThemeData(
-        colorSchemeSeed: Colors.amber,
+        colorSchemeSeed: Colors.deepPurple,
       ),
-
       home: const FormularioSimplesPage(),
-      /// A rota padrão do aplicativo ao inicializar
-      
       debugShowCheckedModeBanner: false,
     );
   }
 }
 
+// Stateful Widget
 class FormularioSimplesPage extends StatefulWidget {
   const FormularioSimplesPage({super.key});
 
   @override
   State<FormularioSimplesPage> createState() => _FormularioSimplesPageState();
-  /// Instanciação de um estado que será filho do widget atual (State<T>), no caso, _FormularioSimplesPageState
-  /// Fat arrow function (=>) retorna um objeto STATE _FormularioSimplesPageState sempre que esse widget for posto na Árvore de Widgets
 }
 
+// State Widget Definition
 class _FormularioSimplesPageState extends State<FormularioSimplesPage> {
-/// Codificação efetiva do estado a ser utilizado no widget. O State<Type> significa que o estado está explicitamente atrelado à classe FormularioSimplesPage, impedindo o uso dos métodos de seu objeto em outro widget não mencionado
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  // Uma GlobalKey é uma identificação ÚNICA dentro do app para o estado que controla o formulário <FormState> e que é definida durante o RUNTIME e permanece inalterada (PARECE SER APENAS ÚTIL EM DEBUGGING)
 
+  // Controllers
   final TextEditingController _nomeController = TextEditingController();
-  // Instancia um controller para um campo editável no layout e atribui a uma variável final
-  final TextEditingController _emailController = TextEditingController();
   final TextEditingController _senhaController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
 
-  String _toqueMensagem = 'Nenhum toque detectado ainda.';
+  // Controlador de Visibilidade
+  bool _isPasswordVisible = true;
+
+  // Mensagem de Gesto
+  // ignore: unused_field, prefer_final_fields
+  String _toqueMensagem = 'Ainda nenhum toque detectado.';
 
   @override
   void dispose() {
-    /// Destrói permanentemente os recursos da classe
-    
     _nomeController.dispose();
-    _emailController.dispose();
     _senhaController.dispose();
+    _emailController.dispose();
     super.dispose();
   }
-  
+
   void _enviarFormulario() {
     if (_formKey.currentState!.validate()) {
-      /// Valida os campos editáveis do formulário
-      
       ScaffoldMessenger.of(context).showSnackBar(
-      /// Gerenciador de snack bars e material banners. Utiliza o BUILDCONTEXT atual para criar os componentes no lugar correto
-      
-        SnackBar(content: Text(
-        /// Instancia a mensagem no lado inferior da tela
-          
-          'Formulário Válido!\nNome: ${_nomeController}, Email: ${_emailController.text}'),
-          backgroundColor: Colors.green,
-        ),
+        SnackBar(
+          content: Text("Usuário registrado com sucesso!\nNome: ${_nomeController.text}\nE-mail: ${_emailController.text}"),
+          backgroundColor: Colors.lightGreen,
+        )
       );
 
+      // Campo destinado a armazenar os valores no Banco de Dados
       print('Dados a enviar:');
       print('Nome: ${_nomeController.text}');
       print('Email: ${_emailController.text}');
       print('Senha: ${_senhaController.text}');
-      
     } else {
-
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('Por favor, corrija os erros no formulário.'),
-          backgroundColor: Colors.red,
+          content: Text("Não foi possível enviar o formulário. Corrija os erros e tente novamente"),
+          backgroundColor: Colors.redAccent,
         ),
       );
+      //_formKey.currentState!.reset();
     }
   }
 
   @override
   Widget build(BuildContext context) {
-  /// Sobrescreve o método build para gerar o elemento do formulário
-  
     return Scaffold(
-    /// Retorna uma estrutura pronta de tela
-    
       appBar: AppBar(
-        title: const Text('Entrada de Dados e Interatividade'),
+        title: const Text("Entrada de Dados e Interatividade"),
       ),
-
       body: SingleChildScrollView(
-      /// Cria uma caixa onde apenas o widget pode ser escrolável (scrollable)
-      
         padding: const EdgeInsets.all(20.0),
-        
         child: Form(
           key: _formKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              const Text(
+                "Cadastre-se",
+                style: TextStyle(
+                  color: Colors.deepPurple,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 28
+                ),
+                textAlign: TextAlign.center,
+              ),
+              
+              const SizedBox(
+                height: 25,
+              ),
 
+              TextField(
+                controller: _nomeController,
+                decoration: const InputDecoration(
+                  labelText: "Nome Completo",
+                  hintText: "João Silva",
+                  prefixIcon: Icon(Icons.person_4),
+                  border: OutlineInputBorder(),
+                ),
+                onChanged: (text) {
+                  // Espaço destinado a validar em tempo-real o input
+                },
+              ),
+
+              const SizedBox(
+                height: 25,
+              ),
+
+              TextFormField(
+                controller: _emailController,
+                decoration: const InputDecoration(
+                  labelText: "E-mail",
+                  hintText: "john@doe.com.br",
+                  prefixIcon: Icon(Icons.email),
+                  border: OutlineInputBorder(),
+                ),
+                onChanged: (text) {
+                  // Espaço destinado a validar em tempo-real o input
+                },
+                validator: (email) {
+                  if (email == null || email.isEmpty) {
+                    return 'O e-mail é obrigatório';
+                  }
+
+                  if (!email.contains('@') || !email.contains('.')) {
+                    return 'Digite um e-mail válido';
+                  }
+
+                  return null;
+                },
+              ),
+              
+              const SizedBox(
+                height: 25,
+              ),
+
+              TextFormField(
+                controller: _senhaController,
+                obscureText: _isPasswordVisible,
+                decoration: InputDecoration(
+                  labelText: "Senha",
+                  hintText: "Mínimo 6 caracteres",
+                  prefixIcon: const Icon(Icons.lock),
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      setState(() {
+                        _isPasswordVisible = !_isPasswordVisible;
+                      });
+                    },
+                    icon: Icon(_isPasswordVisible ? Icons.visibility_off : Icons.visibility ),
+                  ),
+                  border: OutlineInputBorder(),
+                ),
+                onChanged: (text) {
+                  // Espaço destinado a validar em tempo-real o input
+                },
+                validator: (senha) {
+                  if (senha == null || senha.isEmpty) {
+                    return "Digite uma senha válida";
+                  }
+
+                  if (senha.length < 6) {
+                    return "Digite uma senha de ao menos 6 dígitos";
+                  }
+
+                  return null;
+                },
+              ),
+
+              const SizedBox(
+                height: 30,
+              ),
+
+              ElevatedButton.icon(
+                onPressed: _enviarFormulario,
+                label: const Text(
+                  "Enviar",
+                  style: TextStyle(fontSize: 18),
+                ),
+                icon: const Icon(Icons.send_rounded),
+                style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(vertical: 15),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  )
+                )
+              ),
+
+              const SizedBox(
+                height: 20,
+              ),
+
+              TextButton(
+                onPressed: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text("Termos aceitos!"))
+                  );
+                },
+                child: const Text("Leia os Termos de Uso")
+              ),
+
+              const SizedBox(
+                height: 30,
+              ),
+
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    _toqueMensagem = "Single Tap!";
+                  });
+
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text("Você deu um clique")
+                    )
+                  );
+                },
+                onDoubleTap: () {
+                  setState(() {
+                    _toqueMensagem = "Double Tap!";
+                  });
+
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text("Você deu dois cliques")
+                    )
+                  );
+                },
+                onLongPress: () {
+                  setState(() {
+                    _toqueMensagem = "Long Pressed!";
+                  });
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text("Você pressionou o contâiner")),
+                  );
+                },
+                child: Container(
+                  padding: const EdgeInsets.all(20),
+                  color: Colors.deepPurple.shade100,
+                  alignment: Alignment.center,
+                  child: Column(
+                    children: [
+                      const Icon(Icons.touch_app_sharp, size: 50, color: Colors.deepPurple),
+                      const SizedBox(height: 10,),
+                      Text(
+                        _toqueMensagem,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(fontSize: 16, color: Colors.deepPurple)
+                      )
+                    ],
+                  )
+                ),
+              ),
+
+              const SizedBox(
+                height: 20,
+              ),
+
+              ElevatedButton(
+              onPressed: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text("Nome digitado (TextField): ${_nomeController.text}")
+                  ),
+                );
+              },
+              child: const Text("Ver nome inserido")
+              ),
             ],
-          )
-        )
-      )
-    )
+          ),
+        ),
+      ),
+    );
   }
 }
