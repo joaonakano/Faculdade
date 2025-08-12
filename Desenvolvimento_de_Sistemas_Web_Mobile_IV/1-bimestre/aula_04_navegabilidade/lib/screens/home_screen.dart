@@ -5,84 +5,105 @@ class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
+  // Substituimos a criação de estados padrao dessa classe
+  // Definimos um tipo genérico com o nome dessa classe
+  // Adicionamos o construtor de estados privado
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
+// Aqui criamos a classe que servirá de estado
+// 1. Para que serve a droga do <T>? E por que ele referencia a classe Stateful Widget anterior?
 class _HomeScreenState extends State<HomeScreen> {
-  int _contadorClique = 0; // Estado local para o contador
+  int _contadorClique = 0;
 
   void _incrementarContador() {
-    setState(() { // Notifica o Flutter que o estado mudou
+    // Notifica ao interior do Flutter que o estado mudou
+    setState(() {
       _contadorClique++;
     });
   }
 
+  // 2. Por que existe um build dentro dessa classe estado?
+  // 3. Será que eu preciso usar um build do sistema inteiro dentro do estado ou posso apenas adicionar o que ele deveria exibir
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Tela Principal'),
+        title: const Text("Aula 04, Navegabilidade"),
       ),
+      
+      // 4. Para que serve o Center e por que ele precisa ser posto no inicio?
       body: Center(
         child: Column(
+          // 5. Se existe o Widget Center(), por que alinhamento é importante?
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
-              'Bem-vindo ao Projeto Integrador!',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              "Bem-vindo(a) ao Projeto Integrador!",
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold
+              ),
               textAlign: TextAlign.center,
             ),
-            const SizedBox(height: 30),
 
-            // Exemplo de Contador com setState
+            const SizedBox(height: 30,),
+
             const Text(
-              'Cliques no botão de navegação:',
+              "Cliques no botão de navegação:",
               style: TextStyle(fontSize: 18),
             ),
+            
+            // 6. Por que não posso color o contador diretamente no texto igual faz no PHP?
             Text(
               '$_contadorClique',
-              style: const TextStyle(fontSize: 48, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                fontSize: 48,
+                fontWeight: FontWeight.bold
+              ),
             ),
-            const SizedBox(height: 20),
+
+            const SizedBox(height: 20,),
 
             ElevatedButton(
               onPressed: () {
-                _incrementarContador(); // Incrementa o contador
-                // Navegar para a tela de detalhes, passando dados
+                _incrementarContador();
+
+                // 7. Por que usamos Navigator.push ao invés de redirecionamentos normais?
                 Navigator.push(
                   context,
+                  // 8. Por que usamos MaterialPageRoute?
+                  // 9. Para que serve o Builder?
                   MaterialPageRoute(
                     builder: (context) => DetailScreen(
                       itemId: 42,
                       itemName: 'Item Secreto',
-                      cliquesContador: _contadorClique, // Passando o estado do contador
-                    ),
-                  ),
+                      cliquesContador: _contadorClique
+                    )
+                  )
                 );
               },
-              child: const Text('Ir para Detalhes do Item'),
+              child: const Text("Ir para os detalhes do Item"),
             ),
-            const SizedBox(height: 20),
 
-            // Exemplo de pushReplacement - útil após login ou reset
+            const SizedBox(height: 20,),
+
             ElevatedButton(
               onPressed: () {
-                // Simula um "logout" ou "reset" do app, retornando à tela principal
+                // 10. O que é o pushReplacement?
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => const HomeScreen()), // Redireciona para a própria Home, mas substitui na pilha
-                );
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Simulando reset/logout!')),
+                  MaterialPageRoute(
+                    builder: (context) => const HomeScreen()
+                  )
                 );
               },
-              style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-              child: const Text('Simular Reset/Logout'),
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.deepPurple),
+              child: const Text('Simular Reset/Logout', style: TextStyle(color: Colors.white),),
             ),
           ],
-        ),
+        )
       ),
     );
   }
 }
-
