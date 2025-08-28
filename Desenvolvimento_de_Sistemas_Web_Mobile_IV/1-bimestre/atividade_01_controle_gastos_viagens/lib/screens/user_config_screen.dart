@@ -46,7 +46,7 @@ class _DropdownMenuWidgetState extends State<DropdownMenuWidget> {
   final TextEditingController expenseLimitController = TextEditingController();
 
   String? selectedCurrency;
-  double? selectedExpenseLimit;
+  String? selectedExpenseLimit;
 
   @override
   Widget build(BuildContext context) {
@@ -90,13 +90,16 @@ class _DropdownMenuWidgetState extends State<DropdownMenuWidget> {
                 labelText: 'Limite de gastos',
                 border: OutlineInputBorder(),
               ),
-              onSubmitted: (String Limite) async {
+              onSubmitted: (String limiteGastos) async {
+                setState(() {
+                  selectedExpenseLimit = limiteGastos;
+                });
                 await showDialog(
-                  context: context, 
+                  context: context,
                   builder: (BuildContext context) {
                     return AlertDialog(
                       title: const Text('Aviso'),
-                      content: Text('Suas configurações foram salvas! $Limite'),
+                      content: Text('Suas configurações foram salvas!\nMoeda Selecionada: $selectedCurrency\nLimite de Gastos: $selectedExpenseLimit'),
                       actions: <Widget>[
                         TextButton(onPressed: () {
                           Navigator.pop(context);
