@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class UserConfigScreen extends StatelessWidget {
   const UserConfigScreen({super.key});
@@ -70,6 +71,11 @@ class _DropdownMenuWidgetState extends State<DropdownMenuWidget> {
               ],
             ),
             TextField(
+              keyboardType: TextInputType.number,
+              inputFormatters: <TextInputFormatter>[
+                FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+                FilteringTextInputFormatter.digitsOnly
+              ],
               decoration: InputDecoration(
                 prefixIcon: Icon(Icons.monetization_on),
                 suffixIcon: Icon(Icons.clear),
