@@ -52,6 +52,7 @@ class _DropdownMenuWidgetState extends State<DropdownMenuWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
+        //padding: EdgeInsets.all(100),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -69,8 +70,15 @@ class _DropdownMenuWidgetState extends State<DropdownMenuWidget> {
                 DropdownMenuEntry(value: "GBP", label: "GBP"),
                 DropdownMenuEntry(value: "JPY", label: "JPY"),
               ],
+              onSelected: (String? moedaSelecionada) {
+                setState(() {
+                  selectedCurrency = moedaSelecionada;
+                });
+              },
             ),
+            const SizedBox(height: 18,),
             TextField(
+              controller: expenseLimitController,
               keyboardType: TextInputType.number,
               inputFormatters: <TextInputFormatter>[
                 FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
@@ -82,16 +90,16 @@ class _DropdownMenuWidgetState extends State<DropdownMenuWidget> {
                 labelText: 'Limite de gastos',
                 border: OutlineInputBorder(),
               ),
-              onSubmitted: (String value) async {
+              onSubmitted: (String Limite) async {
                 await showDialog(
                   context: context, 
                   builder: (BuildContext context) {
                     return AlertDialog(
                       title: const Text('Aviso'),
-                      content: Text('Suas configurações foram salvas!'),
+                      content: Text('Suas configurações foram salvas! $Limite'),
                       actions: <Widget>[
                         TextButton(onPressed: () {
-                          //Navigator.pop(context);
+                          Navigator.pop(context);
                           print('Funcionou');
                         }, child: const Text('OK'))
                       ],
