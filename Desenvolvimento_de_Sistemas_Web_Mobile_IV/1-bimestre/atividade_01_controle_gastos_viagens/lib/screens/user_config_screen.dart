@@ -67,9 +67,32 @@ class _DropdownMenuWidgetState extends State<DropdownMenuWidget> {
                 DropdownMenuEntry(value: "EUR", label: "EUR"),
                 DropdownMenuEntry(value: "GBP", label: "GBP"),
                 DropdownMenuEntry(value: "JPY", label: "JPY"),
-        
               ],
             ),
+            TextField(
+              decoration: InputDecoration(
+                prefixIcon: Icon(Icons.monetization_on),
+                suffixIcon: Icon(Icons.clear),
+                labelText: 'Limite de gastos',
+                border: OutlineInputBorder(),
+              ),
+              onSubmitted: (String value) async {
+                await showDialog(
+                  context: context, 
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      title: const Text('Aviso'),
+                      content: Text('Suas configurações foram salvas!'),
+                      actions: <Widget>[
+                        TextButton(onPressed: () {
+                          //Navigator.pop(context);
+                          print('Funcionou');
+                        }, child: const Text('OK'))
+                      ],
+                    );
+                  });
+              },
+            )
           ],
         ),
       ),
