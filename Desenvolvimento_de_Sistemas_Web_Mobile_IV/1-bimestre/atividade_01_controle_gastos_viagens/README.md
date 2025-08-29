@@ -1,8 +1,8 @@
-# atividade_01_controle_gastos_viagens
+# Atividade 01 - Extra: Aplicativo de Controle de Gastos em Flutter
 
-A new Flutter project.
+Projeto criado para a atividade extra requisitada pelo professor Giovane Galvão
 
-## Getting Started
+## Como Inicializar o Aplicativo
 
 This project is a starting point for a Flutter application.
 
