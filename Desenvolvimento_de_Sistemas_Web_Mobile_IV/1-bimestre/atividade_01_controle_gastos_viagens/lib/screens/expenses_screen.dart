@@ -1,3 +1,4 @@
+import 'package:atividade_01_controle_gastos_viagens/widgets/bottom_navigation_bar_widget.dart';
 import 'package:flutter/material.dart';
 
 class ExpensesScreen extends StatelessWidget {
@@ -7,25 +8,12 @@ class ExpensesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(
-          Icons.menu,
-          color: Colors.white,
-        ),
         title: const Text(
           "Gastos",
           style: TextStyle(
             color: Colors.white,
           ),
         ),
-        actions: [
-          IconButton(
-            onPressed: null,
-            icon: Icon(
-              Icons.settings,
-              color: Colors.white,
-            ),
-          ),
-        ],
         backgroundColor: Colors.blueAccent[400],
       ),
       body: Column(
@@ -86,9 +74,9 @@ class ExpensesScreen extends StatelessWidget {
             ),
             ),
           ),
-          
         ],
       ),
+      bottomNavigationBar: BottomNavigationBarWidget(),
     );
   }
 }
