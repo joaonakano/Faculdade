@@ -1,5 +1,4 @@
-import 'package:atividade_01_controle_gastos_viagens/screens/expenses_screen.dart';
-import 'package:atividade_01_controle_gastos_viagens/screens/user_config_screen.dart';
+import 'package:atividade_01_controle_gastos_viagens/widgets/bottom_navigation_bar_widget.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,8 +12,8 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       routes: {
-        '/': (context) => const ExpensesScreen(),
-        '/config': (context) => const UserConfigScreen(),
+        '/': (context) => BottomNavigationBarWidget(),
+        //'/config': (context) => const UserConfigScreen(),
       },
       debugShowCheckedModeBanner: false,
     );

@@ -1,4 +1,3 @@
-import 'package:atividade_01_controle_gastos_viagens/widgets/bottom_navigation_bar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -7,17 +6,8 @@ class UserConfigScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(onPressed: null, icon: Icon(Icons.arrow_back_ios)),
-        //actions: [IconButton(onPressed: null, icon: Icon(Icons.settings))],
-        title: const Text("Configurações", style: TextStyle(color: Colors.white),),
-        backgroundColor: Colors.blue[400],
-      ),
-      body: Center(
+    return Center(
         child: DropdownMenuWidget(),
-      ),
-      bottomNavigationBar: BottomNavigationBarWidget(),
     );
   }
 }

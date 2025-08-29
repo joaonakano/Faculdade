@@ -1,4 +1,7 @@
 
+import 'package:atividade_01_controle_gastos_viagens/screens/expenses_creation_screen.dart';
+import 'package:atividade_01_controle_gastos_viagens/screens/expenses_screen.dart';
+import 'package:atividade_01_controle_gastos_viagens/screens/user_config_screen.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavigationBarWidget extends StatefulWidget {
@@ -10,34 +13,42 @@ class BottomNavigationBarWidget extends StatefulWidget {
 
 class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> {
   int _selectedIndex = 0;
+
+  static const List<String> _widgetAppTitles = <String>[
+    'Dashboard',
+    'Nova Despesa',
+    'Configurações',
+  ];
+  
+  static const List<Widget> _widgetOptions = <Widget>[
+    ExpensesScreen(),
+    ExpensesCreationScreen(),
+    UserConfigScreen(),
+  ];
   
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
-
-    switch (index) {
-      case 0:
-        Navigator.pushNamed(context, '/');
-      case 1:
-        Navigator.pushNamed(context, '/'); // alterar para a rota depois
-      case 2:
-        Navigator.pushNamed(context, '/config');
-      default:
-        Navigator.pushNamed(context, '/');
-    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(items: const <BottomNavigationBarItem>[
-        BottomNavigationBarItem(icon: Icon(Icons.dashboard_customize), label: "Dashboard"),
-        BottomNavigationBarItem(icon: Icon(Icons.add_box_outlined), label: "Nova Despesa"),
-        BottomNavigationBarItem(icon: Icon(Icons.settings), label: "Configurações"),
-      ],
-      currentIndex: _selectedIndex,
-      selectedItemColor: Colors.blue[400],
-      onTap: _onItemTapped,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(_widgetAppTitles.elementAt(_selectedIndex)),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(Icons.dashboard_customize), label: _widgetAppTitles.elementAt(0)),
+          BottomNavigationBarItem(icon: Icon(Icons.add_box_outlined), label: _widgetAppTitles.elementAt(1)),
+          BottomNavigationBarItem(icon: Icon(Icons.settings), label: _widgetAppTitles.elementAt(2)),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.blue[400],
+        onTap: _onItemTapped,
+      ),
+      body: _widgetOptions.elementAt(_selectedIndex),
     );
   }
 }
