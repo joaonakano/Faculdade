@@ -1,4 +1,4 @@
-import 'package:atividade_01_controle_gastos_viagens/screens/user_config_screen.dart';
+import 'package:atividade_01_controle_gastos_viagens/screens/expenses_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,7 +11,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: const UserConfigScreen(),
+      home: const ExpensesScreen(),
       debugShowCheckedModeBanner: false,
     );
   }

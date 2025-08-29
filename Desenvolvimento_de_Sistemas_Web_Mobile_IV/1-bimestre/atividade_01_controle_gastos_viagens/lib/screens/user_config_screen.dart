@@ -109,7 +109,24 @@ class _DropdownMenuWidgetState extends State<DropdownMenuWidget> {
                     );
                   });
               },
-            )
+            ),
+            const SizedBox(height: 18,),
+            ElevatedButton.icon(
+              onPressed: null,
+              icon: Icon(
+                Icons.send,
+                color: Colors.white,
+              ),
+              label: const Text(
+                "Salvar",
+                style: TextStyle(
+                  color: Colors.white
+                ),
+              ),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blueAccent,
+              ),
+            ),
           ],
         ),
       ),
