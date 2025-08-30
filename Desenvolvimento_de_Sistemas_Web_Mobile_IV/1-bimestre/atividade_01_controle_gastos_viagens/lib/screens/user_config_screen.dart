@@ -1,30 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class UserConfigScreen extends StatelessWidget {
   const UserConfigScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-        child: DropdownMenuWidget(),
+    return const Center(
+      child: DropdownMenuWidget(),
     );
   }
 }
-
-class SliderWidget extends StatefulWidget {
-  const SliderWidget({super.key});
-
-  @override
-  State<SliderWidget> createState() => _SliderWidgetState();
-}
-
-class _SliderWidgetState extends State<SliderWidget> {
-  @override
-  Widget build(BuildContext context) {
-    return const Text("TESTE");
-  }
-} 
 
 class DropdownMenuWidget extends StatefulWidget {
   const DropdownMenuWidget({super.key});
@@ -38,13 +25,22 @@ class _DropdownMenuWidgetState extends State<DropdownMenuWidget> {
   final TextEditingController expenseLimitController = TextEditingController();
 
   String? selectedCurrency;
-  String? selectedExpenseLimit;
+  double? selectedExpenseLimit;
+
+  Future<void> _saveSettings() async {
+    final prefs = await SharedPreferences.getInstance();
+    if (selectedCurrency != null) {
+      await prefs.setString('selectedCurrency', selectedCurrency!);
+    }
+    if (selectedExpenseLimit != null) {
+      await prefs.setDouble('selectedExpensesLimit', selectedExpenseLimit!);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        //padding: EdgeInsets.all(100),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -55,7 +51,7 @@ class _DropdownMenuWidgetState extends State<DropdownMenuWidget> {
               requestFocusOnTap: true,
               initialSelection: "JPY",
               label: const Text("Moeda"),
-              dropdownMenuEntries: [
+              dropdownMenuEntries: const [
                 DropdownMenuEntry(value: "BRL", label: "BRL"),
                 DropdownMenuEntry(value: "USD", label: "USD"),
                 DropdownMenuEntry(value: "EUR", label: "EUR"),
@@ -68,7 +64,7 @@ class _DropdownMenuWidgetState extends State<DropdownMenuWidget> {
                 });
               },
             ),
-            const SizedBox(height: 18,),
+            const SizedBox(height: 18),
             TextField(
               controller: expenseLimitController,
               keyboardType: TextInputType.number,
@@ -76,44 +72,51 @@ class _DropdownMenuWidgetState extends State<DropdownMenuWidget> {
                 FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
                 FilteringTextInputFormatter.digitsOnly
               ],
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 prefixIcon: Icon(Icons.monetization_on),
                 suffixIcon: Icon(Icons.clear),
                 labelText: 'Limite de gastos',
                 border: OutlineInputBorder(),
               ),
-              onSubmitted: (String limiteGastos) async {
+              onSubmitted: (String limiteGastos) {
                 setState(() {
-                  selectedExpenseLimit = limiteGastos;
+                  selectedExpenseLimit =
+                      double.tryParse(limiteGastos) ?? 0.0;
                 });
-                await showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return AlertDialog(
-                      title: const Text('Aviso'),
-                      content: Text('Suas configurações foram salvas!\nMoeda Selecionada: $selectedCurrency\nLimite de Gastos: $selectedExpenseLimit'),
-                      actions: <Widget>[
-                        TextButton(onPressed: () {
-                          Navigator.pop(context);
-                          print('Funcionou');
-                        }, child: const Text('OK'))
-                      ],
-                    );
-                  });
               },
             ),
-            const SizedBox(height: 18,),
+            const SizedBox(height: 18),
             ElevatedButton.icon(
-              onPressed: null,
-              icon: Icon(
+              onPressed: () async {
+                await _saveSettings();
+                if (mounted) {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: const Text('Aviso'),
+                        content: Text(
+                            'Suas configurações foram salvas!\nMoeda Selecionada: $selectedCurrency\nLimite de Gastos: $selectedExpenseLimit'),
+                        actions: <Widget>[
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: const Text('OK'),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                }
+              },
+              icon: const Icon(
                 Icons.send,
                 color: Colors.white,
               ),
               label: const Text(
                 "Salvar",
-                style: TextStyle(
-                  color: Colors.white
-                ),
+                style: TextStyle(color: Colors.white),
               ),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.blueAccent,

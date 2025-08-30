@@ -16,7 +16,7 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> {
 
   static const List<String> _widgetAppTitles = <String>[
     'Dashboard',
-    'Nova Despesa',
+    'My neck hurts',
     'Configurações',
   ];
   
