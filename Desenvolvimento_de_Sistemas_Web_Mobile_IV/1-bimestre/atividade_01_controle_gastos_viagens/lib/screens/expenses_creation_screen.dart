@@ -10,7 +10,7 @@ class ExpensesCreationScreen extends StatefulWidget {
 
 class _ExpensesCreationScreenState extends State<ExpensesCreationScreen> {
   String selectedCurrency = "";
-  String selectedExpensesLimit = "";
+  double selectedExpensesLimit = 0.0;
 
   @override
   void initState() {
@@ -23,7 +23,7 @@ class _ExpensesCreationScreenState extends State<ExpensesCreationScreen> {
     setState(() {
       selectedCurrency = prefs.getString('selectedCurrency') ?? "Nenhuma moeda";
       selectedExpensesLimit =
-          prefs.getString('selectedExpensesLimit') ?? "Nenhum limite"; //bagulho do demonio, mas funcionou
+          prefs.getDouble('selectedExpensesLimit') ?? 0.0; //bagulho do demonio, mas funcionou
     });
   }
 
