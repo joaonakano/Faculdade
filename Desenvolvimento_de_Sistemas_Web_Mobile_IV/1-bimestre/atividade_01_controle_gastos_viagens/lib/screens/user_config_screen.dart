@@ -78,16 +78,14 @@ class _DropdownMenuWidgetState extends State<DropdownMenuWidget> {
                 labelText: 'Limite de gastos',
                 border: OutlineInputBorder(),
               ),
-              onSubmitted: (String limiteGastos) {
-                setState(() {
-                  selectedExpenseLimit =
-                      double.tryParse(limiteGastos) ?? 0.0;
-                });
-              },
             ),
             const SizedBox(height: 18),
             ElevatedButton.icon(
               onPressed: () async {
+                setState(() {
+                  selectedExpenseLimit = double.tryParse(expenseLimitController.text) ?? 0.0;
+                });
+
                 await _saveSettings();
                 if (mounted) {
                   showDialog(
