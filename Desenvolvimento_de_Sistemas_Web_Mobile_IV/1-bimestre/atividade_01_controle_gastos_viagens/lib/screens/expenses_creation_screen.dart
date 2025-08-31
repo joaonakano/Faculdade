@@ -1,14 +1,9 @@
-// imports sqlite
 import 'dart:async';
-import 'package:path/path.dart';
-import "package:sqflite/sqflite.dart";
-import 'package:flutter/widgets.dart';
-
+import 'package:atividade_01_controle_gastos_viagens/helpers/database_helper.dart';
+import 'package:atividade_01_controle_gastos_viagens/models/expense_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-// importando database
 
 
 class ExpensesCreationScreen extends StatefulWidget {
@@ -131,13 +126,38 @@ class _ExpensesCreationScreenState extends State<ExpensesCreationScreen> {
               ],
             ),
             const SizedBox(height: 20,),
-            ElevatedButton(onPressed: () {
-              if (_formKey.currentState!.validate()) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Processando Dados')),
-                );
-              }
-            }, child: const Text("Enviar"))
+            ElevatedButton(
+              onPressed: () async {
+                if (_formKey.currentState!.validate()) {
+                  // instancia singleton
+                  final dbHelper = DatabaseHelper();
+                  
+                  // usando um helper para gerar um objeto despesa
+                  final newExpense = Expense(
+                    id: DateTime.now().millisecondsSinceEpoch,
+                    title: titleExpenseController.text,
+                    description: descriptionExpenseController.text,
+                    value: double.tryParse(totalExpenseValueController.text) ?? 0.0,
+                  );
+
+                  // inserindo o dado no db com o helper
+                  await dbHelper.insertExpense(newExpense);
+
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('Despesa criada com sucesso!'), backgroundColor: Colors.green,),
+                  );
+
+                  // printando
+                  final allExpenses = await dbHelper.getExpenses();
+                  print(allExpenses);
+
+                  // cleaning dummass
+                  titleExpenseController.clear();
+                  descriptionExpenseController.clear();
+                  totalExpenseValueController.clear();
+                }
+              },
+            child: const Text("Enviar"))
           ],
         ),
       ),
@@ -145,6 +165,7 @@ class _ExpensesCreationScreenState extends State<ExpensesCreationScreen> {
   }
 }
 
+// Unused shit
 class SliderWidget extends StatefulWidget {
   const SliderWidget({super.key});
 
@@ -152,6 +173,7 @@ class SliderWidget extends StatefulWidget {
   State<SliderWidget> createState() => _SliderWidgetState();
 }
 
+// Unused shit
 class _SliderWidgetState extends State<SliderWidget> {
   double _currentSliderValue = 20;
 
