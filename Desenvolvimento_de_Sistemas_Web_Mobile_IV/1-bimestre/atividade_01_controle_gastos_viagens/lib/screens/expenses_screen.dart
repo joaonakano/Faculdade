@@ -32,7 +32,7 @@ class ExpensesScreen extends StatelessWidget {
               crossAxisCount: 2,
               crossAxisSpacing: 16,
               mainAxisSpacing: 16,
-              childAspectRatio: 0.66,
+              childAspectRatio: 0.66,    // mudando isso temos o tamanho do card, mas ainda esta bem bugado
             ),
             itemBuilder: (context, index) {
               final expense = expenses[index];
