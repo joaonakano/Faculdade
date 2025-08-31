@@ -1,6 +1,15 @@
+// imports sqlite
+import 'dart:async';
+import 'package:path/path.dart';
+import "package:sqflite/sqflite.dart";
+import 'package:flutter/widgets.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+// importando database
+
 
 class ExpensesCreationScreen extends StatefulWidget {
   const ExpensesCreationScreen({super.key});
@@ -33,8 +42,6 @@ class _ExpensesCreationScreenState extends State<ExpensesCreationScreen> {
       currencyController.text = selectedCurrency ?? '';
     });
   }
-
-
 
   @override
   Widget build(BuildContext context) {
