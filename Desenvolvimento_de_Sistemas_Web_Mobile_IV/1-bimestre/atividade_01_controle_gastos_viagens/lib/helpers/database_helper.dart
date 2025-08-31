@@ -59,4 +59,13 @@ class DatabaseHelper {
         Expense(id: id, value: value, title: title, description: description),
     ];
   }
+
+  Future<int> getExpensesCount() async {
+    final db = await database;
+    final count = Sqflite.firstIntValue(
+      await db.rawQuery('SELECT COUNT(*) FROM expenses'),
+    );
+    
+    return count ?? 0;
+  }
 }
